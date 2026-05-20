@@ -1,0 +1,167 @@
+[
+  {
+    "id": "1",
+    "name": "Tirana Digital Hub",
+    "location": "Tirana",
+    "basePrice": 42,
+    "sleeps": 2,
+    "lat": 41.3275,
+    "lng": 19.8187,
+    "photoUrl": "",
+    "description": "A sleek co-living studio in Blloku with 500Mbps fibre, a sit-stand desk, and a rooftop terrace. Built for remote workers who want caffeine, bandwidth, and a city that doesn't sleep."
+  },
+  {
+    "id": "2",
+    "name": "Blloku Boutique Apartment",
+    "location": "Tirana",
+    "basePrice": 68,
+    "sleeps": 2,
+    "lat": 41.3260,
+    "lng": 19.8172,
+    "photoUrl": "",
+    "description": "A design-forward two-room apartment on the former Communist Party bloc, now Tirana's most fashionable neighbourhood. Ten minutes on foot to every restaurant worth going to."
+  },
+  {
+    "id": "3",
+    "name": "Tirana Sky Penthouse",
+    "location": "Tirana",
+    "basePrice": 195,
+    "sleeps": 4,
+    "lat": 41.3300,
+    "lng": 19.8200,
+    "photoUrl": "",
+    "description": "A full-floor penthouse with panoramic city views, rooftop plunge pool, and a private chef available on request. The most unapologetically luxurious stay in the capital."
+  },
+  {
+    "id": "4",
+    "name": "Durrës Beachfront Studio",
+    "location": "Durrës",
+    "basePrice": 55,
+    "sleeps": 2,
+    "lat": 41.3240,
+    "lng": 19.4560,
+    "photoUrl": "",
+    "description": "Step off the terrace directly onto the Adriatic beach. Simple, clean, and 35 minutes from Tirana airport. Best value on the coast for a couples' escape."
+  },
+  {
+    "id": "5",
+    "name": "Saranda Bay Retreat",
+    "location": "Saranda",
+    "basePrice": 95,
+    "sleeps": 5,
+    "lat": 39.8756,
+    "lng": 20.0053,
+    "photoUrl": "",
+    "description": "A bright three-bedroom villa perched above Saranda's crescent bay. Private pool, sunbeds, a gated garden, and a fully equipped kitchen for family meals. Corfu is visible from the terrace."
+  },
+  {
+    "id": "6",
+    "name": "Ksamil Paradise Bungalow",
+    "location": "Ksamil",
+    "basePrice": 125,
+    "sleeps": 3,
+    "lat": 39.7700,
+    "lng": 20.0050,
+    "photoUrl": "",
+    "description": "A whitewashed bungalow 40 metres from the turquoise water of Ksamil's famous islets. The beach is practically your front garden."
+  },
+  {
+    "id": "7",
+    "name": "Vlorë Cliffside Apartment",
+    "location": "Vlorë",
+    "basePrice": 72,
+    "sleeps": 3,
+    "lat": 40.4670,
+    "lng": 19.4897,
+    "photoUrl": "",
+    "description": "Perched on the limestone cliffs south of Vlorë with sweeping views of the Bay of Vlorë and the Karaburun peninsula. A dramatic base for exploring the Riviera."
+  },
+  {
+    "id": "8",
+    "name": "Himara Riviera Cottage",
+    "location": "Himara",
+    "basePrice": 82,
+    "sleeps": 4,
+    "lat": 40.1020,
+    "lng": 19.7460,
+    "photoUrl": "",
+    "description": "An old stone cottage tucked into the hillside above Himara. Fig trees in the garden, the sound of cicadas at night, and a fifteen-minute walk to a nearly empty beach."
+  },
+  {
+    "id": "9",
+    "name": "Dhermi Beach House",
+    "location": "Dhermi",
+    "basePrice": 115,
+    "sleeps": 6,
+    "lat": 40.1250,
+    "lng": 19.6150,
+    "photoUrl": "",
+    "description": "A spacious six-person house on Albania's most celebrated beach. White pebbles, electric-blue water, and a party scene for those who want it — or total solitude 200 metres down the coast."
+  },
+  {
+    "id": "10",
+    "name": "Berat Stone Guesthouse",
+    "location": "Berat",
+    "basePrice": 48,
+    "sleeps": 3,
+    "lat": 40.7058,
+    "lng": 19.9522,
+    "photoUrl": "",
+    "description": "Inside the walls of Berat's Ottoman old town — a UNESCO World Heritage site — this 200-year-old stone house has original carved ceilings, a terrace overlooking the Osum valley, and a host who makes the best byrek in the city."
+  },
+  {
+    "id": "11",
+    "name": "Gjirokastër Ottoman Mansion",
+    "location": "Gjirokastër",
+    "basePrice": 62,
+    "sleeps": 4,
+    "lat": 40.0757,
+    "lng": 20.1389,
+    "photoUrl": "",
+    "description": "A restored 18th-century kulla (tower house) in Gjirokastër's stone city, another UNESCO site. Vaulted ceilings, bay windows with mountain views, antique furnishings, and the feeling that time has stopped."
+  },
+  {
+    "id": "12",
+    "name": "Shkodra Lakeside B&B",
+    "location": "Shkodër",
+    "basePrice": 38,
+    "sleeps": 2,
+    "lat": 42.0683,
+    "lng": 19.5126,
+    "photoUrl": "",
+    "description": "A family-run B&B on the shores of Lake Shkodër — the largest lake in the Balkans. Kayaks included, homemade rakia at sundown, and a cycling path that goes all the way to the Accursed Mountains."
+  },
+  {
+    "id": "13",
+    "name": "Pogradec Ohrid View",
+    "location": "Pogradec",
+    "basePrice": 52,
+    "sleeps": 3,
+    "lat": 40.9025,
+    "lng": 20.6556,
+    "photoUrl": "",
+    "description": "A tranquil lakeside apartment in Pogradec with floor-to-ceiling windows over Lake Ohrid. Shared garden, freshwater swimming, and the best koran fish you will ever eat from the restaurant next door."
+  },
+  {
+    "id": "14",
+    "name": "Valbona Valley Chalet",
+    "location": "Valbona",
+    "basePrice": 65,
+    "sleeps": 6,
+    "lat": 42.4531,
+    "lng": 20.0742,
+    "photoUrl": "",
+    "description": "A wooden chalet in the heart of the Accursed Mountains national park. The trailhead for the famous Valbona–Theth hike starts at the garden gate. Zero phone signal. Maximum mountains."
+  },
+  {
+    "id": "15",
+    "name": "Tirana Art District Loft",
+    "location": "Tirana",
+    "basePrice": 50,
+    "sleeps": 2,
+    "lat": 41.3310,
+    "lng": 19.8100,
+    "photoUrl": "",
+    "description": "A high-ceilinged loft in Tirana's emerging creative quarter, surrounded by galleries, independent coffee shops, and street murals. The host is an artist who leaves a different painting in the apartment each month."
+  }
+]
