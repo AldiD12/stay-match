@@ -1,9 +1,11 @@
+export type PlaceCategory = 'accommodation' | 'restaurant' | 'bar' | 'cafe' | 'activity';
+
 export interface Property {
   id: string;
   name: string;
   location: string;
+  category: PlaceCategory;
   basePrice: number;
-  sleeps: number;
   lat: number;
   lng: number;
   photoUrl: string;

@@ -62,9 +62,24 @@ export default function PropertyCard({ property: rp, index, featured = false }: 
       </div>
 
       <div className="p-6 pt-2">
-        {/* Name + Price */}
+        {/* Name + Price / Category badge */}
         <div className="flex items-start justify-between gap-4 mb-1">
           <div className="min-w-0">
+            <div className="flex items-center gap-2 mb-1">
+              <span className={`text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-full ${
+                property.category === 'accommodation' ? 'bg-blue-50 text-blue-600' :
+                property.category === 'restaurant' ? 'bg-orange-50 text-orange-600' :
+                property.category === 'bar' ? 'bg-purple-50 text-purple-600' :
+                property.category === 'cafe' ? 'bg-green-50 text-green-700' :
+                'bg-amber-50 text-amber-700'
+              }`}>
+                {property.category === 'accommodation' ? '🏨 Stay' :
+                 property.category === 'restaurant' ? '🍽 Eat' :
+                 property.category === 'bar' ? '🍸 Drink' :
+                 property.category === 'cafe' ? '☕ Work & Coffee' :
+                 '🗺 Experience'}
+              </span>
+            </div>
             <h3 className="text-headline-md font-bold text-primary tracking-tight leading-tight truncate">{property.name}</h3>
             <div className="flex items-center gap-2 mt-1 flex-wrap">
               {property.totalScore && (
@@ -80,10 +95,12 @@ export default function PropertyCard({ property: rp, index, featured = false }: 
               )}
             </div>
           </div>
-          <div className="text-right shrink-0">
-            <span className="font-serif text-secondary font-bold text-xl">${property.basePrice}</span>
-            <span className="text-on-surface-variant/60 text-xs block uppercase tracking-wider">/night</span>
-          </div>
+          {property.category === 'accommodation' && property.basePrice > 0 && (
+            <div className="text-right shrink-0">
+              <span className="font-serif text-secondary font-bold text-xl">${property.basePrice}</span>
+              <span className="text-on-surface-variant/60 text-xs block uppercase tracking-wider">/night</span>
+            </div>
+          )}
         </div>
 
         {/* AI Headline */}

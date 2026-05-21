@@ -13,8 +13,8 @@ function loadAll(): Property[] {
 
 export interface FetchPropertiesArgs {
   location?: string;
+  category?: string;
   maxPrice?: number;
-  partySize?: number;
 }
 
 export function fetchProperties(args: FetchPropertiesArgs): Property[] {
@@ -24,11 +24,12 @@ export function fetchProperties(args: FetchPropertiesArgs): Property[] {
     const loc = args.location.toLowerCase();
     results = results.filter(p => p.location.toLowerCase().includes(loc));
   }
-  if (args.maxPrice !== undefined) {
-    results = results.filter(p => p.basePrice <= args.maxPrice!);
+  if (args.category) {
+    const cat = args.category.toLowerCase();
+    results = results.filter(p => p.category.toLowerCase().includes(cat));
   }
-  if (args.partySize !== undefined) {
-    results = results.filter(p => p.sleeps >= args.partySize!);
+  if (args.maxPrice !== undefined) {
+    results = results.filter(p => !p.basePrice || p.basePrice <= args.maxPrice!);
   }
 
   return results;
@@ -37,21 +38,22 @@ export function fetchProperties(args: FetchPropertiesArgs): Property[] {
 export const fetchPropertiesDeclaration = {
   name: 'fetchProperties',
   description:
-    'Search Albanian properties filtered by location, maximum nightly price, and party size. Returns matching property objects.',
+    'Search Albanian places filtered by location, category, and optional max price. Returns matching places. Use category to distinguish between: accommodation (hotels/guesthouses), restaurant, bar, cafe (cafes/coworking), activity (attractions/tours/museums).',
   parametersJsonSchema: {
     type: 'object',
     properties: {
       location: {
         type: 'string',
-        description: 'City or region in Albania, e.g. "Saranda", "Tirana", "Valbona".',
+        description: 'City or region in Albania e.g. "Saranda", "Tirana", "Berat".',
+      },
+      category: {
+        type: 'string',
+        enum: ['accommodation', 'restaurant', 'bar', 'cafe', 'activity'],
+        description: 'Type of place to search for.',
       },
       maxPrice: {
         type: 'number',
-        description: 'Maximum price per night in USD.',
-      },
-      partySize: {
-        type: 'number',
-        description: 'Minimum number of guests the property must sleep.',
+        description: 'Maximum price per night in USD (for accommodation only).',
       },
     },
     required: [],
