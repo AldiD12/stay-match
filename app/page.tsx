@@ -6,6 +6,7 @@ import SearchInput from '@/components/SearchInput';
 import DemoQueryButtons from '@/components/DemoQueryButtons';
 import ExecutionVisualizer from '@/components/ExecutionVisualizer';
 import PropertyCard from '@/components/PropertyCard';
+import PlaneTransition from '@/components/PlaneTransition';
 import type { AgentEvent, RankedProperty } from '@/lib/types';
 
 interface ChatMessage {
@@ -323,6 +324,7 @@ export default function HomePage() {
 
   return (
     <>
+      <PlaneTransition />
       {/* Top NavBar */}
       <nav className="hidden md:block fixed bg-surface/90 backdrop-blur-md top-0 border-b border-outline-variant/30 w-full h-20 px-margin-mobile md:px-margin-desktop z-50 transition-all duration-200">
         <div className="flex justify-between items-center w-full h-full max-w-container-max mx-auto">
