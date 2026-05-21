@@ -46,3 +46,80 @@ html {
   border-radius: 20px;
 }
 
+/* Plane Transition Animation - Optimized for 60fps */
+.plane-transition-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #F9F8F6;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* Hardware acceleration */
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-font-smoothing: subpixel-antialiased;
+}
+
+.plane-transition-wrapper.animating {
+  animation: fadeOutScreen 2.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.plane-container {
+  position: absolute;
+  width: 50vw;
+  height: auto;
+  right: -30vw;
+  top: 50%;
+  transform: translateY(-50%) rotate(-90deg);
+  pointer-events: none;
+  /* Hardware acceleration for smooth movement */
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+.plane-container.animating {
+  animation: flyHorizontal 2.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.plane-svg {
+  /* Optimize SVG rendering */
+  shape-rendering: geometricPrecision;
+  transform: translateZ(0);
+}
+
+@media (max-width: 768px) {
+  .plane-container {
+    width: 70vw;
+    right: -40vw;
+  }
+}
+
+/* Smooth 60fps horizontal flight (right to left) using transform only (GPU accelerated) */
+@keyframes flyHorizontal {
+  0% {
+    transform: translate3d(0, -50%, 0) rotate(-90deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(-150vw, -50%, 0) rotate(-90deg);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOutScreen {
+  0% {
+    opacity: 1;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
