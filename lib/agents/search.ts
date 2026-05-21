@@ -13,14 +13,14 @@ export async function* runSearchAgent(
   originalQuery: string,
   acceptedCollector: PropertyAnalysis[],
 ): AsyncGenerator<AgentEvent> {
-  const systemPrompt = `You are a property matching agent for Albania. Your job:
-1. Call fetchProperties to get candidates matching the location, budget, and party size.
-2. For EACH candidate, call analyzePropertyReviews with criteria derived from the user's vibe and travel style.
-3. Properties with matchStrength >= 0.45 are accepted. Those below are rejected. Accept at most 5.
-4. When done, output a brief summary sentence.
+  const systemPrompt = `You are a property matching agent for Albania. Follow these steps EXACTLY:
+1. Call fetchProperties ONCE to get candidates. Do NOT call it again.
+2. For EACH property returned, call analyzePropertyReviews with the criteria below.
+3. After all analyzePropertyReviews calls are done, output a single summary sentence. Stop.
 
+Criteria for analyzePropertyReviews: "${intent.vibe} ${intent.travelStyle}"
 User query: "${originalQuery}"
-Intent: location=${intent.location}, maxPrice=${intent.maxPrice ?? 'any'}, partySize=${intent.partySize ?? 'any'}, vibe="${intent.vibe}", style=${intent.travelStyle}`;
+Filters: location=${intent.location}, maxPrice=${intent.maxPrice ?? 'any'}, partySize=${intent.partySize ?? 'any'}`;
 
   const contents: Content[] = [{ role: 'user', parts: [{ text: systemPrompt }] }];
   const allProps = fetchProperties({});
@@ -98,6 +98,5 @@ Intent: location=${intent.location}, maxPrice=${intent.maxPrice ?? 'any'}, party
     }
 
     contents.push({ role: 'function', parts: responseParts });
-    await new Promise(r => setTimeout(r, 400));
   }
 }

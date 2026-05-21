@@ -542,30 +542,48 @@ export default function HomePage() {
           }`}>
             <header className="mb-8 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
               <div>
-                <h2 className="font-headline-lg text-headline-lg text-on-surface">Curated for You</h2>
-                <p className="font-body-md text-body-md text-on-surface-variant mt-1 leading-relaxed">
-                  {selectedMessageProperties.length > 0 
-                    ? `Based on active curated matches in Albania`
-                    : `State your nomad parameters to search luxury stays`}
-                </p>
+                {selectedMessageProperties.length > 0 ? (
+                  <>
+                    <div className="flex items-center gap-2 mb-1">
+                      <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                      <span className="text-[11px] font-bold uppercase tracking-widest text-green-600">
+                        {selectedMessageProperties.length} match{selectedMessageProperties.length !== 1 ? 'es' : ''} found
+                      </span>
+                    </div>
+                    <h2 className="font-headline-lg text-headline-lg text-on-surface">Curated for You</h2>
+                    <p className="font-body-md text-body-md text-on-surface-variant mt-1">
+                      Avg. vibe match: <strong>{Math.round(selectedMessageProperties.reduce((s, p) => s + p.vibeMatchPercent, 0) / selectedMessageProperties.length)}%</strong>
+                      {' · '}Sorted by compatibility
+                    </p>
+                  </>
+                ) : (
+                  <>
+                    <h2 className="font-headline-lg text-headline-lg text-on-surface">Curated for You</h2>
+                    <p className="font-body-md text-body-md text-on-surface-variant mt-1">Describe your ideal stay to get matched</p>
+                  </>
+                )}
               </div>
-              <button className="flex items-center gap-2 font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors border border-outline-variant/50 rounded-full px-5 py-2.5 self-start sm:self-auto uppercase tracking-wider bg-surface-bright shadow-sm hover:shadow-md">
-                <span className="material-symbols-outlined text-[16px]">tune</span> Filters
-              </button>
             </header>
 
             {selectedMessageProperties.length > 0 ? (
-              <div className="grid grid-cols-1 xl:grid-cols-2 gap-gutter">
-                {selectedMessageProperties.map((p, i) => (
-                  <PropertyCard key={p.property.id} property={p} index={i} />
-                ))}
+              <div className="space-y-6">
+                {/* #1 result — featured hero card */}
+                <PropertyCard key={selectedMessageProperties[0].property.id} property={selectedMessageProperties[0]} index={0} featured={true} />
+                {/* Rest in 2-col grid */}
+                {selectedMessageProperties.length > 1 && (
+                  <div className="grid grid-cols-1 xl:grid-cols-2 gap-gutter">
+                    {selectedMessageProperties.slice(1).map((p, i) => (
+                      <PropertyCard key={p.property.id} property={p} index={i + 1} />
+                    ))}
+                  </div>
+                )}
               </div>
             ) : (
               <div className="flex flex-col items-center justify-center h-[55vh] text-center border border-dashed border-outline-variant/40 rounded-[2.5rem] bg-surface-container-lowest/30 p-8 shadow-inner">
                 <span className="material-symbols-outlined text-[48px] text-on-surface-variant/20 mb-4 animate-bounce">page_info</span>
                 <p className="text-on-surface-variant font-serif italic text-base max-w-xs leading-relaxed">
-                  {isRunning 
-                    ? "Evaluating and scoring stays matching your lifestyle..." 
+                  {isRunning
+                    ? "Evaluating and scoring stays matching your lifestyle..."
                     : "No matches loaded. Send a message to stream curated stays here."}
                 </p>
               </div>

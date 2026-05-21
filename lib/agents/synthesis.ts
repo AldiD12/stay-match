@@ -58,8 +58,23 @@ ${JSON.stringify(context, null, 2)}`;
   let synthResults: SynthResult[] = [];
   try {
     synthResults = JSON.parse(clean) as SynthResult[];
-  } catch {
-    return [];
+  } catch (e) {
+    // JSON parse failed — build a minimal result directly from the analysis data
+    console.error('[synthesis] JSON parse failed:', e, '\nRaw response:', raw.slice(0, 500));
+    return analyses
+      .map(a => {
+        const prop = allProps.find(p => p.id === a.propertyId);
+        if (!prop) return null;
+        return {
+          property: prop,
+          vibeMatchPercent: Math.round(a.matchStrength * 100),
+          headline: `${prop.name} — ${Math.round(a.matchStrength * 100)}% match`,
+          explanation: prop.description,
+          quotes: a.quotes.slice(0, 2),
+        };
+      })
+      .filter((r): r is RankedProperty => r !== null)
+      .sort((a, b) => b.vibeMatchPercent - a.vibeMatchPercent);
   }
 
   return synthResults

@@ -3,11 +3,15 @@ import { GoogleGenAI } from '@google/genai';
 export const GEMINI_MODEL = 'gemini-2.5-flash-lite';
 export const EMBEDDING_MODEL = 'gemini-embedding-001';
 
+const PROJECT = 'staymatch-496921';
+const LOCATION = 'us-central1';
+
 function getClient(): GoogleGenAI {
-  if (!process.env.GOOGLE_API_KEY) {
-    throw new Error('GOOGLE_API_KEY environment variable is required');
+  // On Cloud Run: uses ADC (service account). Locally: falls back to API key.
+  if (process.env.GOOGLE_API_KEY) {
+    return new GoogleGenAI({ apiKey: process.env.GOOGLE_API_KEY });
   }
-  return new GoogleGenAI({ apiKey: process.env.GOOGLE_API_KEY });
+  return new GoogleGenAI({ vertexai: true, project: PROJECT, location: LOCATION });
 }
 
 function retryDelayMs(err: unknown): number | null {
@@ -29,9 +33,18 @@ async function sleep(ms: number) {
 export async function generateContent(
   ...args: Parameters<GoogleGenAI['models']['generateContent']>
 ): Promise<ReturnType<GoogleGenAI['models']['generateContent']>> {
+  // thinkingBudget:0 disables reasoning tokens — cuts latency ~50%
+  const [params] = args;
+  const fastParams = {
+    ...params,
+    config: {
+      ...params.config,
+      thinkingConfig: { thinkingBudget: 0 },
+    },
+  };
   for (let attempt = 0; attempt < 5; attempt++) {
     try {
-      return await getClient().models.generateContent(...args);
+      return await getClient().models.generateContent(fastParams);
     } catch (err) {
       const delay = retryDelayMs(err);
       if (attempt < 4 && delay !== null) {

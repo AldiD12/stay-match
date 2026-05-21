@@ -8,6 +8,12 @@ export interface Property {
   lng: number;
   photoUrl: string;
   description: string;
+  totalScore?: number;
+  reviewsCount?: number;
+  hotelStars?: string;
+  phone?: string;
+  website?: string;
+  address?: string;
 }
 
 export interface Review {

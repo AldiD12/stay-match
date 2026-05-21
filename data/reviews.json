@@ -1,123 +1,965 @@
 [
-  { "propertyId": "1", "author": "Marcus T.", "date": "2025-03-12", "text": "Absolutely made for remote workers. The 500Mbps fibre never dropped during three weeks of back-to-back video calls. Standing desk, good chair, zero noise from the street.", "source": "Airbnb" },
-  { "propertyId": "1", "author": "Lena K.", "date": "2025-02-20", "text": "I've worked from co-living spaces across six countries and this is genuinely in the top three. Two monitors on the desk, a proper ergonomic chair, and the host is a developer himself so he actually understands what remote work means.", "source": "Google" },
-  { "propertyId": "1", "author": "Rui S.", "date": "2025-04-01", "text": "Fast internet, rooftop with sunset views, and Blloku's best coffee shops within a five-minute walk. Perfect digital nomad base.", "source": "Booking.com" },
-  { "propertyId": "1", "author": "Priya M.", "date": "2025-01-15", "text": "I came for a month and extended to two. The workspace is serious — blackout blinds, noise-cancelling environment, dedicated IP if you need it. This place was designed by someone who actually works remotely.", "source": "Airbnb" },
-  { "propertyId": "1", "author": "Tom B.", "date": "2025-03-28", "text": "Tirana surprised me. The city is buzzing, the food is great, and this apartment is the ideal home base. Internet is flawless.", "source": "Google" },
-  { "propertyId": "1", "author": "Sara D.", "date": "2025-02-08", "text": "Stayed for six weeks while on a client contract. The desk setup is better than my actual office back home. Rooftop is fantastic for evening wind-downs.", "source": "Airbnb" },
-  { "propertyId": "1", "author": "Ahmed N.", "date": "2025-04-18", "text": "Clean, modern, great wifi. The neighbourhood is very walkable and there are several co-working cafés nearby if you want a change of scenery.", "source": "Booking.com" },
-  { "propertyId": "1", "author": "Celine F.", "date": "2025-01-30", "text": "Perfect for a solo digital nomad. Quiet building, fast connection, thoughtful layout. Highly recommend for anyone looking to work productively from Tirana.", "source": "Airbnb" },
-  { "propertyId": "1", "author": "James H.", "date": "2025-05-02", "text": "The dual-monitor setup and ethernet port are a genuine rarity in Airbnbs. Download speeds regularly hit 400Mbps. Stayed three weeks, would absolutely return.", "source": "Google" },
-  { "propertyId": "1", "author": "Yuki T.", "date": "2025-03-05", "text": "Amazing nomad setup. I'd been warned Albania had slow internet — not here. It's faster than my home broadband in Tokyo.", "source": "Airbnb" },
-
-  { "propertyId": "2", "author": "Elena R.", "date": "2025-02-14", "text": "The most stylish apartment I've stayed in across the Balkans. Interior design is thoughtful, the building is quiet, and you're seconds from Blloku's bar and restaurant scene.", "source": "Airbnb" },
-  { "propertyId": "2", "author": "David C.", "date": "2025-03-20", "text": "Lovely boutique feel. Linen, proper coffee equipment, well-stocked kitchen. The location in Blloku means you step out into the best neighbourhood in Tirana.", "source": "Booking.com" },
-  { "propertyId": "2", "author": "Nora V.", "date": "2025-01-22", "text": "Romantic and central. We had a great couples' weekend — walked everywhere, ate incredibly well, and came back to a genuinely beautiful apartment.", "source": "Airbnb" },
-  { "propertyId": "2", "author": "Chris P.", "date": "2025-04-10", "text": "Excellent value for Blloku. High ceilings, nice light, comfortable bed. The host was responsive and left a bottle of local wine.", "source": "Google" },
-  { "propertyId": "2", "author": "Maja S.", "date": "2025-02-28", "text": "Slept well, ate well, explored the city. The apartment is exactly as pictured and the neighbourhood is great for evening strolls.", "source": "Airbnb" },
-  { "propertyId": "2", "author": "Felix W.", "date": "2025-05-01", "text": "Perfect Tirana city break base. The design details — the artwork, the textiles, the coffee kit — show the host actually cares. Would book again.", "source": "Booking.com" },
-  { "propertyId": "2", "author": "Hana L.", "date": "2025-03-08", "text": "Very clean, very well equipped, and in the heart of the action. The nightlife downstairs can be noisy on weekends but earplugs were provided.", "source": "Airbnb" },
-  { "propertyId": "2", "author": "Patrick O.", "date": "2025-04-25", "text": "I visit Tirana for work twice a year and this is now my default. Better than any hotel at half the price.", "source": "Google" },
-
-  { "propertyId": "3", "author": "Caroline B.", "date": "2025-03-15", "text": "Utterly extraordinary. The rooftop plunge pool at sunset with the whole city below you is a once-in-a-trip experience. The chef's tave kosi was the best I've had in Albania.", "source": "Airbnb" },
-  { "propertyId": "3", "author": "Robert H.", "date": "2025-02-05", "text": "If you want to celebrate something, book this. It's expensive by Albanian standards but laughably cheap for what you get — a full penthouse floor with panoramic views and impeccable service.", "source": "Google" },
-  { "propertyId": "3", "author": "Isabel M.", "date": "2025-04-20", "text": "The most luxurious stay of my year. Rooftop pool, floor-to-ceiling windows, private concierge. Tirana has genuinely arrived.", "source": "Airbnb" },
-  { "propertyId": "3", "author": "Anthony K.", "date": "2025-01-18", "text": "Peak luxury in Albania. The panoramic city view is jaw-dropping at night. Every detail is considered — Egyptian cotton, Nespresso, proper toiletries.", "source": "Booking.com" },
-  { "propertyId": "3", "author": "Sophie G.", "date": "2025-03-30", "text": "Booked for a honeymoon night. The private plunge pool overlooking Tirana's rooftops was exactly as romantic as it sounds. Exceptional host, exceptional place.", "source": "Airbnb" },
-  { "propertyId": "3", "author": "Ben T.", "date": "2025-05-08", "text": "Genuinely five-star experience at a fraction of Western European luxury prices. The concierge arranged restaurant reservations and a driver. Flawless.", "source": "Google" },
-
-  { "propertyId": "4", "author": "Jessica A.", "date": "2025-06-10", "text": "Woke up, walked ten steps, jumped in the Adriatic. The dream of every summer holiday. Simple apartment, clean, good shower, excellent location.", "source": "Booking.com" },
-  { "propertyId": "4", "author": "Marco L.", "date": "2025-07-02", "text": "Best value on the Albanian coast. Direct beach access, free sunbeds, and Tirana is 35 minutes away if you need the city. Perfect couples' retreat.", "source": "Airbnb" },
-  { "propertyId": "4", "author": "Anna B.", "date": "2025-06-22", "text": "We spent five days here doing nothing but swim, eat grilled fish, and read. Exactly what we needed. The terrace faces east for a sunrise coffee.", "source": "Google" },
-  { "propertyId": "4", "author": "Lucas P.", "date": "2025-07-15", "text": "Unbeatable for a beach break near Tirana. The studio is compact but sensibly laid out. I'd have happily stayed another week.", "source": "Booking.com" },
-  { "propertyId": "4", "author": "Nina S.", "date": "2025-08-01", "text": "A proper beachfront spot without the Mykonos prices. Clean, comfortable, and the host was on hand for local restaurant tips.", "source": "Airbnb" },
-  { "propertyId": "4", "author": "George F.", "date": "2025-06-05", "text": "The Adriatic from the terrace every morning is just special. Simple pleasures done perfectly.", "source": "Google" },
-  { "propertyId": "4", "author": "Dana K.", "date": "2025-07-28", "text": "Lovely little studio. Not fancy, but immaculate. The beach is right there. What more do you need?", "source": "Airbnb" },
-  { "propertyId": "4", "author": "Steve M.", "date": "2025-08-10", "text": "Couples' paradise. Morning swim, afternoon read, evening meal at the fish restaurant 200 metres away. Repeat.", "source": "Booking.com" },
-
-  { "propertyId": "5", "author": "Claire D.", "date": "2025-07-08", "text": "The best family holiday we've had in years. The pool kept the kids happy for hours, the kitchen let us do our own thing, and Saranda has enough activities to fill two weeks.", "source": "Airbnb" },
-  { "propertyId": "5", "author": "Paul W.", "date": "2025-06-25", "text": "Took the whole family — three kids, two adults. Plenty of space, the gated garden felt safe for the little ones, and the view of Corfu from the terrace was surreal.", "source": "Google" },
-  { "propertyId": "5", "author": "Emma L.", "date": "2025-07-20", "text": "Family holiday sorted. Three bedrooms, private pool, big garden. The kids could be as loud as they wanted without disturbing anyone. Saranda beach is ten minutes' walk.", "source": "Booking.com" },
-  { "propertyId": "5", "author": "John M.", "date": "2025-08-05", "text": "Superb for a family group. We had five of us and didn't feel cramped at all. The villa is set back from the road so it's very quiet. Highly recommended.", "source": "Airbnb" },
-  { "propertyId": "5", "author": "Rachel T.", "date": "2025-07-12", "text": "Travelled with our three children (ages 4, 7, 10) and this was genuinely the smoothest family holiday ever. Everything was there — cots, high chair, toys, a safe garden. The host even left a welcome box of snacks for the kids.", "source": "Airbnb" },
-  { "propertyId": "5", "author": "Michael B.", "date": "2025-06-30", "text": "Perfect for families. Large pool, child-safe garden, three proper bedrooms with good beds. Saranda is a great base for day trips to Butrint and Ksamil.", "source": "Google" },
-  { "propertyId": "5", "author": "Laura N.", "date": "2025-07-28", "text": "We came with our toddler and a grandparent in tow. The ground floor bedroom was ideal, pool was shallow enough for kids, and the host sorted a babysitter on two evenings so we could go out. Outstanding.", "source": "Booking.com" },
-  { "propertyId": "5", "author": "Sam C.", "date": "2025-08-18", "text": "Saranda with kids doesn't get much easier than this. Pool, garden, sea views, and a fully stocked kitchen. The five of us fitted perfectly.", "source": "Airbnb" },
-  { "propertyId": "5", "author": "Kate R.", "date": "2025-07-05", "text": "The view of Corfu from the terrace at breakfast is one of those things that stays with you. Beautiful family villa, brilliantly located.", "source": "Google" },
-
-  { "propertyId": "6", "author": "James O.", "date": "2025-07-14", "text": "The water here is unlike anything I've seen in the Mediterranean. Ksamil is absurdly beautiful and this bungalow puts you right on it. The beach is 40 metres from the front door.", "source": "Airbnb" },
-  { "propertyId": "6", "author": "Maria G.", "date": "2025-08-02", "text": "Honeymooned here. The turquoise water, the islets, the white pebbles — it's like being inside a screensaver. The bungalow itself is simple but clean and perfectly located.", "source": "Booking.com" },
-  { "propertyId": "6", "author": "Tom S.", "date": "2025-07-22", "text": "If you haven't been to Ksamil, go. And if you go, stay here. The proximity to the beach is unmatched. Worth every cent.", "source": "Google" },
-  { "propertyId": "6", "author": "Sophie H.", "date": "2025-08-15", "text": "Absolutely stunning location. The bungalow is cosy and beautifully whitewashed. We swam four times a day and never wanted to leave.", "source": "Airbnb" },
-  { "propertyId": "6", "author": "Alex D.", "date": "2025-07-30", "text": "Best beach in Albania, best-located accommodation. Ksamil's water is genuinely Caribbean-level clear. Great for a romantic couple's escape.", "source": "Booking.com" },
-  { "propertyId": "6", "author": "Niamh B.", "date": "2025-08-08", "text": "I've done Greece, Croatia, Montenegro. Ksamil beats most of them. This bungalow is the ideal base — intimate, quiet, and right on the water.", "source": "Airbnb" },
-  { "propertyId": "6", "author": "Connor M.", "date": "2025-07-18", "text": "For a romantic trip to the Albanian Riviera this is exactly right. Small, private, gorgeous views, and the sound of the sea at night.", "source": "Google" },
-
-  { "propertyId": "7", "author": "Luisa V.", "date": "2025-06-15", "text": "Those views. You wake up and there's just the Bay of Vlorë stretching to the horizon. The apartment itself is modern and clean. Great for a couple wanting something dramatic.", "source": "Airbnb" },
-  { "propertyId": "7", "author": "Peter A.", "date": "2025-07-10", "text": "Vlorë is an underrated city and this clifftop spot is the ideal reason to come. Views are as advertised — absolutely spectacular, especially at golden hour.", "source": "Google" },
-  { "propertyId": "7", "author": "Diana F.", "date": "2025-06-28", "text": "Dramatic setting, good apartment, easy access to Karaburun by boat. We loved having the whole bay in front of us every evening.", "source": "Booking.com" },
-  { "propertyId": "7", "author": "Christos P.", "date": "2025-07-20", "text": "Three nights in this clifftop apartment were genuinely restorative. The light at sunset is extraordinary. A place to breathe.", "source": "Airbnb" },
-  { "propertyId": "7", "author": "Anna T.", "date": "2025-08-03", "text": "Great views, well-maintained apartment, quiet location. Vlorë city centre is a 15-minute drive. Good for a seaside escape without the Riviera crowds.", "source": "Google" },
-  { "propertyId": "7", "author": "Mark L.", "date": "2025-06-05", "text": "The cliffside terrace is the star of the show. Fresh breezes, sweeping bay views, and an apartment that's genuinely comfortable. Recommended.", "source": "Airbnb" },
-
-  { "propertyId": "8", "author": "Fiona M.", "date": "2025-07-05", "text": "Exactly the authentic Albanian experience I was looking for. Stone walls, fig trees, cicadas, and a beach you share with almost nobody. The host's family has lived here for generations.", "source": "Airbnb" },
-  { "propertyId": "8", "author": "Oliver B.", "date": "2025-07-25", "text": "One of those places that makes you want to rent for a month. The hillside setting, the old stone cottage, the quiet — it feels like the real Albania, not the tourist version.", "source": "Google" },
-  { "propertyId": "8", "author": "Helena J.", "date": "2025-08-12", "text": "Hidden gem. Himara town is lovely, the beach is uncrowded, and this cottage has genuine character. Old wooden shutters, terracotta tiles, a proper Albanian host.", "source": "Booking.com" },
-  { "propertyId": "8", "author": "Rory K.", "date": "2025-06-20", "text": "Magical place. The fig tree in the garden, the sound of the sea, the smell of the stone walls warmed by the sun. Four of us loved every minute.", "source": "Airbnb" },
-  { "propertyId": "8", "author": "Sophie L.", "date": "2025-07-15", "text": "Perfectly authentic. Stayed a week and felt like I'd genuinely slowed down. The host brought homemade raki on arrival. Albania at its best.", "source": "Google" },
-  { "propertyId": "8", "author": "Dan W.", "date": "2025-08-01", "text": "Secluded, atmospheric, brilliantly positioned. The nearly empty beach fifteen minutes' walk away is extraordinary — white pebbles, crystal water, no jet-skis.", "source": "Airbnb" },
-  { "propertyId": "8", "author": "Alice G.", "date": "2025-07-08", "text": "The most characterful accommodation on the Albanian Riviera. Stone walls, old beams, a terrace with mountain and sea views. This is what holidays should feel like.", "source": "Booking.com" },
-
-  { "propertyId": "9", "author": "Ben K.", "date": "2025-07-18", "text": "Dhermi's beach is world-class and this house sits right on it. Six of us, comfortable beds for everyone, a big terrace for evening drinks. Best group holiday in years.", "source": "Airbnb" },
-  { "propertyId": "9", "author": "Rosa P.", "date": "2025-08-07", "text": "The beach is everything the photos suggest. Brilliant white pebbles, electric-blue water, and this house is the perfect base for a group. Plenty of space inside and out.", "source": "Google" },
-  { "propertyId": "9", "author": "Jack F.", "date": "2025-07-28", "text": "Albania's Riviera is the last great undiscovered coastline in Europe. We had a group of six here for a week and it was the best value beach holiday any of us could remember.", "source": "Booking.com" },
-  { "propertyId": "9", "author": "Isabelle C.", "date": "2025-08-20", "text": "Six-person house right on Dhermi. Morning swim before everyone else is awake, afternoon lounging, evening at a beach bar. Perfect.", "source": "Airbnb" },
-  { "propertyId": "9", "author": "Tom H.", "date": "2025-07-10", "text": "The house is great but the beach is the reason to come. Dhermi is genuinely among the most beautiful beaches in the Mediterranean. Book early.", "source": "Google" },
-  { "propertyId": "9", "author": "Emily N.", "date": "2025-08-15", "text": "Brought eight friends for a celebration. The house slept us all comfortably, the terrace was big enough for dinner for everyone, and the beach was a five-second walk.", "source": "Airbnb" },
-
-  { "propertyId": "10", "author": "Patricia H.", "date": "2025-04-10", "text": "Staying inside the walls of Berat's old town is a completely different experience to seeing it as a day-tripper. The carved wooden ceilings in this guesthouse are extraordinary — 200-year-old craftsmanship.", "source": "Airbnb" },
-  { "propertyId": "10", "author": "Michael S.", "date": "2025-05-03", "text": "Berat's UNESCO status is entirely deserved and this guesthouse sits in the heart of it. The host knows the history and will happily tell you about every building you can see from the terrace.", "source": "Google" },
-  { "propertyId": "10", "author": "Lucie B.", "date": "2025-03-28", "text": "The terrace view over the Osum valley and the Ottoman houses is one of the most beautiful scenes in Albania. Simple guesthouse, beautiful setting, superb host who makes her own byrek every morning.", "source": "Booking.com" },
-  { "propertyId": "10", "author": "William T.", "date": "2025-04-22", "text": "An authentically historical stay. You feel the weight of centuries in the walls. The host is knowledgeable, warm, and her cooking is genuinely excellent.", "source": "Airbnb" },
-  { "propertyId": "10", "author": "Anna K.", "date": "2025-05-15", "text": "Berat is unmissable and this is the right way to see it — sleeping inside the castle walls. The guesthouse is simple and spotlessly clean, the terrace is magical.", "source": "Google" },
-  { "propertyId": "10", "author": "James D.", "date": "2025-03-15", "text": "The oldest and most atmospheric accommodation I've stayed in across the Balkans. Nothing fancy — just thick stone walls, original ceilings, and a sense of place that money can't manufacture.", "source": "Airbnb" },
-  { "propertyId": "10", "author": "Nadia F.", "date": "2025-06-02", "text": "Completely transported. You forget what year it is in Berat's old town. This guesthouse is the perfect gateway.", "source": "Booking.com" },
-
-  { "propertyId": "11", "author": "Catherine G.", "date": "2025-04-18", "text": "I came to Gjirokastër wanting to feel like an Ottoman aristocrat and this mansion delivered beyond all expectations. The vaulted ceilings, the bay windows, the antique kilims — it's a stage set that happens to be real.", "source": "Airbnb" },
-  { "propertyId": "11", "author": "Edward L.", "date": "2025-05-08", "text": "The most unique accommodation in Albania, possibly in the Balkans. An 18th-century tower house with original furnishings and a view over the stone city. You half expect to see Ismail Kadare writing at the desk.", "source": "Google" },
-  { "propertyId": "11", "author": "Maria C.", "date": "2025-03-20", "text": "Gjirokastër's UNESCO-listed old town is extraordinary and this mansion sits right inside it. The architecture is genuinely breathtaking. Ancient wooden ceilings, stone walls three feet thick, a fireplace that actually works.", "source": "Booking.com" },
-  { "propertyId": "11", "author": "Hugo S.", "date": "2025-04-30", "text": "Staying in a genuine Ottoman kulla is a bucket-list experience. The bay windows with mountain views, the antique furnishings, the cobblestoned alley outside — utterly transporting.", "source": "Airbnb" },
-  { "propertyId": "11", "author": "Freya J.", "date": "2025-05-20", "text": "If you want history and atmosphere in Albania, this is the apex. Four of us stayed and were completely spellbound. The architecture is museum-quality and you sleep in it.", "source": "Google" },
-  { "propertyId": "11", "author": "Leon K.", "date": "2025-03-10", "text": "The kind of place that resets your entire sense of what accommodation can be. Ottoman craftsmanship, mountain views, and a silence at night broken only by owls. Extraordinary.", "source": "Airbnb" },
-  { "propertyId": "11", "author": "Anastasia V.", "date": "2025-06-10", "text": "Time travel is real and it happens in Gjirokastër. This tower house is magnificent — the detail in the carved wood ceiling alone is worth the trip. Booked a second time before I'd even unpacked.", "source": "Booking.com" },
-
-  { "propertyId": "12", "author": "Lars H.", "date": "2025-05-12", "text": "The lake is vast and utterly peaceful. We kayaked for hours every morning and came back to a B&B where the host had rakia and homemade jam waiting. The cycling path along the lake is wonderful.", "source": "Airbnb" },
-  { "propertyId": "12", "author": "Ingrid B.", "date": "2025-04-25", "text": "Shkodra is a city worth knowing and this lakeside B&B gives you the best of it — nature and culture in easy reach. The family who runs it are genuinely warm and the breakfast is huge.", "source": "Google" },
-  { "propertyId": "12", "author": "Patrick S.", "date": "2025-05-30", "text": "Perfect for a nature and cycling break. The lake is beautiful, the kayaks are free to use, and the host's local knowledge — trails, peaks, hidden beaches — is encyclopaedic.", "source": "Booking.com" },
-  { "propertyId": "12", "author": "Elena V.", "date": "2025-04-05", "text": "Simple, genuine, and perfectly located. The lake at sunrise from the B&B garden is a picture. Good value, warm family hosts, excellent homemade breakfast.", "source": "Airbnb" },
-  { "propertyId": "12", "author": "Thomas K.", "date": "2025-05-18", "text": "Came for two nights, stayed five. The combination of lake kayaking, cycling, and the Albanian Alps on the horizon is just incredible. The family runs this place with real pride.", "source": "Google" },
-  { "propertyId": "12", "author": "Klara P.", "date": "2025-06-08", "text": "Peaceful, natural, and authentic. The B&B is simple but spotless. Breakfast included homemade cheese, honey, and bread. The path along the lake is ideal for morning cycling.", "source": "Booking.com" },
-
-  { "propertyId": "13", "author": "George N.", "date": "2025-05-05", "text": "Lake Ohrid from the apartment window every morning is something special. The water is ancient and impossibly clear. We swam, ate koran fish, read books. Absolute tranquillity.", "source": "Airbnb" },
-  { "propertyId": "13", "author": "Marina T.", "date": "2025-04-20", "text": "Pogradec is a hidden gem on one of Europe's oldest and deepest lakes. The apartment has wonderful lake views, the koran fish restaurant next door is outstanding, and the town is completely peaceful.", "source": "Google" },
-  { "propertyId": "13", "author": "Simon J.", "date": "2025-06-12", "text": "A quiet, reflective place. Lake Ohrid stretches to North Macedonia on the horizon. The apartment is clean and comfortable with a genuinely beautiful view. Perfect for a slow, reading holiday.", "source": "Booking.com" },
-  { "propertyId": "13", "author": "Petra H.", "date": "2025-05-28", "text": "Off the tourist trail and all the better for it. Pogradec is a lovely small city, the lake is extraordinary, and this apartment is a perfect perch above it. Would return without hesitation.", "source": "Airbnb" },
-  { "propertyId": "13", "author": "Andrei M.", "date": "2025-04-15", "text": "Very peaceful, very beautiful. The lake view is the main attraction and the apartment frames it perfectly. Simple but thoughtfully done.", "source": "Google" },
-  { "propertyId": "13", "author": "Chiara B.", "date": "2025-06-25", "text": "Came here to disconnect. No tourist crowds, a serene lake, wonderful local fish. The apartment is exactly what you need — comfortable and with that view.", "source": "Airbnb" },
-
-  { "propertyId": "14", "author": "Alex M.", "date": "2025-07-15", "text": "The Valbona–Theth trek starts from the garden gate. I did it twice. Zero phone signal, maximum mountains. The chalet is cosy with a wood-burning stove and a host who knows every trail in the Accursed Mountains.", "source": "Airbnb" },
-  { "propertyId": "14", "author": "Natalie C.", "date": "2025-08-05", "text": "I came to do the famous Valbona to Theth hike. This chalet is the ideal base — gear storage, drying room, big breakfasts, and a host who briefed me on conditions before I set off. World-class hiking.", "source": "Google" },
-  { "propertyId": "14", "author": "Sam T.", "date": "2025-07-25", "text": "Six of us, three hikers and three who just wanted mountains and peace. The chalet accommodated both — hot showers after the trail, a communal fireplace in the evenings, zero civilisation for miles.", "source": "Booking.com" },
-  { "propertyId": "14", "author": "Laura B.", "date": "2025-08-18", "text": "I did sunrise yoga on the chalet deck with the Accursed Mountains behind me. An experience I'll tell people about for years. The host served mountain herb tea and it felt like magic.", "source": "Airbnb" },
-  { "propertyId": "14", "author": "Daniel F.", "date": "2025-07-08", "text": "Completely off-grid. No mobile signal, no Wi-Fi. Just mountains, a wood stove, and a host who speaks three languages and knows the local trails better than anyone. Exactly what I needed.", "source": "Google" },
-  { "propertyId": "14", "author": "Rosa K.", "date": "2025-08-12", "text": "The Valbona valley is the most spectacular landscape in Albania. This chalet sits right in the heart of it. For hikers and nature lovers it's simply perfect.", "source": "Booking.com" },
-  { "propertyId": "14", "author": "Ian H.", "date": "2025-07-30", "text": "Stayed five nights. Hiked every day. The chalet is warm, clean, and wonderfully positioned. Albanian mountain hospitality is extraordinary — the host made us dinner from local vegetables and local cheese every evening.", "source": "Airbnb" },
-
-  { "propertyId": "15", "author": "Sofia D.", "date": "2025-03-22", "text": "The host is an artist and it shows in every corner of this loft. A new painting on the wall each month, beautiful light, high ceilings. Being in Tirana's creative quarter with galleries and independent coffee shops everywhere feels right.", "source": "Airbnb" },
-  { "propertyId": "15", "author": "Oliver C.", "date": "2025-04-12", "text": "Stayed here during a design residency. The loft has serious creative energy — great light, a big table for working, and the neighbourhood is full of studios and galleries. Exactly the right atmosphere.", "source": "Google" },
-  { "propertyId": "15", "author": "Emma P.", "date": "2025-02-25", "text": "The most interesting Airbnb I've stayed in this year. The host is an artist and the apartment reflects it — thoughtfully curated, original, and with a genuinely warm personality to it.", "source": "Airbnb" },
-  { "propertyId": "15", "author": "Felix H.", "date": "2025-03-15", "text": "Tirana's art scene is real and growing fast. This loft is in the middle of it. Independent cafés, murals, galleries. A long way from the usual tourist Albania.", "source": "Booking.com" },
-  { "propertyId": "15", "author": "Vera S.", "date": "2025-04-28", "text": "The changing artwork in the apartment — the host swaps in a new painting each month — is a brilliant touch. I got a moody cityscape that I would happily have bought. Beautiful creative space.", "source": "Google" },
-  { "propertyId": "15", "author": "Kai L.", "date": "2025-02-10", "text": "High ceilings, brilliant light for working or making things. The creative quarter around it is Tirana at its most interesting — raw edges but real energy. Loved every night here.", "source": "Airbnb" },
-  { "propertyId": "15", "author": "Mia R.", "date": "2025-05-05", "text": "If you want to feel like a local in Tirana's arts scene, book this loft. The neighbourhood, the host, the energy of the place — all completely right.", "source": "Booking.com" }
+  {
+    "propertyId": "1",
+    "author": "christelle coustier",
+    "date": "2026-05-10",
+    "text": "Petit hôtel familial très bien situé, pour les visites. Nous avons être très bien accueilli. La chambre était confortable. Très belle vue de la terrasse et petit déjeuner délicieux !! emplacement de parking, très pratique.",
+    "source": "Google",
+    "stars": 5,
+    "language": "fr"
+  },
+  {
+    "propertyId": "1",
+    "author": "Mathieu H.",
+    "date": "2026-05-07",
+    "text": "Mira was a wonderful host, and helpful for discovering Berat and canyon.\nBreakfasts on the terrace are great.\nPerfectly located to discover Berat and its castle.",
+    "source": "Google",
+    "stars": 5,
+    "language": "en"
+  },
+  {
+    "propertyId": "1",
+    "author": "17reynaldr",
+    "date": "2026-05-03",
+    "text": "A short experience with one night in Berat but it was great, very kind person and the villa was very clean. The private parking is one more thing.|The breakfast with a incredible view !",
+    "source": "Google",
+    "stars": null,
+    "language": "en"
+  },
+  {
+    "propertyId": "1",
+    "author": "Hedvig Mathiasson",
+    "date": "2026-03-30",
+    "text": "Så mysigt hotell med jättegod frukost",
+    "source": "Google",
+    "stars": 5,
+    "language": "sv"
+  },
+  {
+    "propertyId": "1",
+    "author": "Venona16",
+    "date": "2026-03-26",
+    "text": "Do Villi trzeba dojść jakieś 40 minut pieszo z postoju busików. Jednakże usytuowana jest w cudownym paśmie domków i restauracji.\nSklepy z pamiątkami i piękne widoki z tarasu sprawiają, że czujesz w tym miejscu szczęście. 😀 Sympatyczna gospodyni wytłumaczyła nam jak najłatwiej dojść do zamku znajdującego się na wzgórzu.\nPo drodze spotkaliśmy starszego Pana czekającego na towarzysza do partyjki w szachy. Wszystko ma to taki ponadczasowy klimat jakby czas w tym miejscu nie grał żadnej roli.\nBardzo urocze, i wyjątkowe miejsce do spędzania urlopu. Polecam!",
+    "source": "Google",
+    "stars": 5,
+    "language": "pl"
+  },
+  {
+    "propertyId": "1",
+    "author": "Katarzyna M",
+    "date": "2026-03-18",
+    "text": "Beautiful view, very good breakfast, very nice and clean room, the owner is very friendly and accomodating. I highly recommend",
+    "source": "Google",
+    "stars": 5,
+    "language": "en"
+  },
+  {
+    "propertyId": "2",
+    "author": "sarah foster",
+    "date": "2026-05-15",
+    "text": "Lovely authentic hotel. Modern bathroom large room on top floor with its own gorgeous balcony.stunnibg views\nFriendly owners\nSimple fresh breakfast\nGreat bar onsite",
+    "source": "Google",
+    "stars": 5,
+    "language": "en"
+  },
+  {
+    "propertyId": "2",
+    "author": "Heiko Lorenz",
+    "date": "2025-10-20",
+    "text": "Oktober 2025: Toll gelegene, privat geführte Unterkunft mit landestypischen, ausreichendem Frühstück. Die Unterkunft ist modern und sauber, die Herbergseltern freundlich und zuvorkommend. Man kann direkt vor der Tür parken. Von der Unterkunft aus kann man schön die Burg erkunden und findet genügend Restaurants fußläufig. In die Stadt führt eine abschüssige glattgelaufene Pflasterstraße, den Rückweg sollte man bequem mit dem Taxi absolvieren.",
+    "source": "Google",
+    "stars": 5,
+    "language": "de"
+  },
+  {
+    "propertyId": "2",
+    "author": "Ronen Faradian",
+    "date": "2025-10-16",
+    "text": "מקום מעולה, יפה, אותנטי. החדרים יפים, המיקום הוא בתוך המתחם של הטירה.חניה בצמוד.",
+    "source": "Google",
+    "stars": 5,
+    "language": "iw"
+  },
+  {
+    "propertyId": "2",
+    "author": "Ofer Ben Shalom",
+    "date": "2025-10-07",
+    "text": "Incredible guesthouse.\nLocated in the walls of the Berat castle, watching an amazing view of the valley & city bellow.\n\nThe hosts are incredible, always helping with anything we have needed.\n\nRooms are simple yet provided exactly what we needed. There are many restaurants nearby, and adjacent parking.\n\nGreatly recommended.",
+    "source": "Google",
+    "stars": 5,
+    "language": "en"
+  },
+  {
+    "propertyId": "2",
+    "author": "Uli Steingruber",
+    "date": "2025-09-19",
+    "text": "Schönstes Guesthouse während unserer Albanientour.\nAldi, der Besitzer ist sehr nett und hilft bei allen Fragen.\nDachzimmer ausgesprochen schön mit guter Aussicht.",
+    "source": "Google",
+    "stars": 5,
+    "language": "de"
+  },
+  {
+    "propertyId": "2",
+    "author": "segev eshel",
+    "date": "2025-09-19",
+    "text": "We had the best time!\nThe host was super nice and kind!\nThe rooms were great, and it have the most beautiful view from the castle to Berat.",
+    "source": "Google",
+    "stars": 5,
+    "language": "en"
+  },
+  {
+    "propertyId": "3",
+    "author": "Koreaner & Deutsche",
+    "date": "2026-05-09",
+    "text": "청결하고 주인분 친절하고 좋습니다.\n조식은 기대를 해서 그런지 살짝 실망했는데 다시 생각해보니 공짜조식으로는 100% 만족합니다.\n뚜벅이들한테는 조금 멀고 차있으면 노상관.\n오히려 주차하기 편하고 한적해서 더 좋습니다.\n\n추천쓰",
+    "source": "Google",
+    "stars": 5,
+    "language": "ko"
+  },
+  {
+    "propertyId": "3",
+    "author": "Hasan Agovic",
+    "date": "2026-05-01",
+    "text": "Çok güzel , nezih ve sıcak bir ortam, sahipleri çok ilgili . Kahve sunumu çok tatlı. Kesinlikle tavsiye ediyorum....",
+    "source": "Google",
+    "stars": 5,
+    "language": "tr"
+  },
+  {
+    "propertyId": "3",
+    "author": "Lik Tsche",
+    "date": "2026-04-28",
+    "text": "Sehr nettes Guesthouse. Garten, in dem das Frühstück serviert wird. Schöne Atmosphäre.",
+    "source": "Google",
+    "stars": 5,
+    "language": "de"
+  },
+  {
+    "propertyId": "3",
+    "author": "Fereshte Hakimi",
+    "date": "2026-04-24",
+    "text": "Freundliche Gastgrberin, köstlicher Frühstuck",
+    "source": "Google",
+    "stars": 5,
+    "language": "de"
+  },
+  {
+    "propertyId": "3",
+    "author": "Hadi gülümse Gül GNRYC",
+    "date": "2026-04-23",
+    "text": "Harika bir ortam, bahce cok güzel harika çiçek ve portakal limon cicekleri kokusu ile. Odalar tertemiz ve hersey mevcut. Ev sahipleri bizim gibi cok sicak kanlı ve misafirperver. Kesinlikle tavsiye ederim",
+    "source": "Google",
+    "stars": 5,
+    "language": "tr"
+  },
+  {
+    "propertyId": "3",
+    "author": "Kardelen Çölkuşu",
+    "date": "2026-04-03",
+    "text": "Perfect stay!\nThe house is clean, cozy, and the location is delightful.\nIcing on the cake Luli, the owner, is a fantastic and incredibly kind person.\nIf you’re looking for a place to stay in Berat, this is your home :)",
+    "source": "Google",
+    "stars": 5,
+    "language": "en"
+  },
+  {
+    "propertyId": "4",
+    "author": "Nis",
+    "date": "2026-04-03",
+    "text": "Supertolle Unterkunft für einen Besuch in Berat.\nGroßer Parkplatz vor dem Haus [selten in Berat].\nAchtung: Google Maps leitet euch einen völligen Mist zusammen. Wir haben es nur hoch geschafft weil Allrad, welches wir zuschalten mussten. Fahrt unbedingt die Straße am Restaurant RUS!!! vorbei dann müsst ihr nicht 1000 Tode sterben.\nEs führen um die 180 Treppenstufen hinunter in die Stadt, der Weg ist größtenteils Unbeleuchtet.\nDie Duschen sind für albanische Verhältnisse ganz normal im Bad so integriert dass man weder Duschwanne noch Vorhang etc hat, schön wäre jedoch einen Abzueher zu haben, sodass man ein wenig trocken machen kann.\nDas Frühstück ist okay, nichts besonderes. Kaffee ist Mangelware haben unsere Espressokocher dabei gehabt, Lucky us.\nDer Besitzer macht jedoch Espresso, auf Wunsch auch Americano.\nAlles in allem war es fantastisch hier zu sein, die Gastgeber, Vater und Sohn sind super nett, Sprachen englisch und Italienisch.",
+    "source": "Google",
+    "stars": 5,
+    "language": "de"
+  },
+  {
+    "propertyId": "4",
+    "author": "Katarzyna Roszak",
+    "date": "2025-10-22",
+    "text": "Un séjour absolument parfait, avec une vue époustouflante et le petit déjeuner délicieux !!!",
+    "source": "Google",
+    "stars": 5,
+    "language": "fr"
+  },
+  {
+    "propertyId": "4",
+    "author": "Eugen Arndt",
+    "date": "2025-10-06",
+    "text": "Sehr freundlicher Besitzer. Schlichte, aber saubere Zimmer. Jedoch fehlt der Duschvorhang und dadurch wird das ganze Badezimmer nass. Das Haus zu finden ist gar nicht so einfach. Aber die Aussicht ist exzellent. Über einen schmalen Pfad gelangt man runter ins Stadtzentrum. Man sollte aber gut zu Fuß sein 😉",
+    "source": "Google",
+    "stars": 5,
+    "language": "de"
+  },
+  {
+    "propertyId": "4",
+    "author": "Susanne",
+    "date": "2025-10-05",
+    "text": "Wundervoller Ausblick auf Berat und die Olivenhaine! Die Gastgeber sind wahnsinnig herzlich und total bemüht! Große Empfehlung :)",
+    "source": "Google",
+    "stars": 5,
+    "language": "de"
+  },
+  {
+    "propertyId": "4",
+    "author": "Estelle LEROY",
+    "date": "2025-09-04",
+    "text": "Nous avons séjourné 2 nuits.\nLa vue est magnifique et la terrasse agréable.\nLes hôtes sont très gentils.\nAccès en centre ville à pied en moins de dix minutes.\nAccès en voiture possible",
+    "source": "Google",
+    "stars": 5,
+    "language": "fr"
+  },
+  {
+    "propertyId": "4",
+    "author": "Milena P",
+    "date": "2025-09-04",
+    "text": "Hotel na żywo wygląda o wiele lepiej niż na zdjęciach. Pokoje są skromne ale czyste, jest wszystko czego potrzeba. Piękny widok na panoramę miasta. Do centrum można zejść schodami od ogrodu właściciela,zajmuje to 5 min- nic strasznego :)  dojazd trochę trudny ale Gospodarz wysłał mapę i daliśmy radę nawet starym fordem fiesta. Bardzo podobał mi się ogród- tak sielsko, wiejsko - są drzewa z oliwkami, winogron, granaty czy figi, które można jeść prosto z drzewka :) niska cena, a jest fajnie ! Warto odwiedzić nawet dla samego widoku. Dziękuję ☺️",
+    "source": "Google",
+    "stars": 5,
+    "language": "pl"
+  },
+  {
+    "propertyId": "4",
+    "author": "A Rsl",
+    "date": "2025-09-03",
+    "text": "The guest house was very cozy and beautiful, very much a \"summer in italy\" vibe, with grapevines and a lovely view. There was also a cute cat who came to say hi. The complimentary breakfast was tasty and the rooms were clean. The wifi was a bit weak in our room but it was fine.",
+    "source": "Google",
+    "stars": 5,
+    "language": "en"
+  },
+  {
+    "propertyId": "4",
+    "author": "Antonia Reid",
+    "date": "2025-09-01",
+    "text": "The owner was incredibly kind and welcoming, and he’ll make sure you have the right directions to reach the hotel by car. Breakfast was absolutely delicious and served in his beautiful garden. The walk to and from town is quite steep, but it’s a lovely stroll.",
+    "source": "Google",
+    "stars": 5,
+    "language": "en"
+  },
+  {
+    "propertyId": "5",
+    "author": "Marine “MarinshR”",
+    "date": "2026-05-08",
+    "text": "2nd time at Tomor’s house. Always a pleasure !! The best breakfast we had. The best host. A kind and lovable soul. We consider him as a friend now! His wife cooks amazingly. Recommend 100%",
+    "source": "Google",
+    "stars": 5,
+    "language": "en"
+  },
+  {
+    "propertyId": "5",
+    "author": "Peter Oppeker",
+    "date": "2026-01-16",
+    "text": "Wir waren im Sommer bei Tomor zu Gast. Er hat sich rührend um uns gekümmert und uns viele Informationen gegeben. Das Zimmer war sehr gut, das Frühstück hervorragend, ein empfehlenswerter Gastgeber!",
+    "source": "Google",
+    "stars": 5,
+    "language": "de"
+  },
+  {
+    "propertyId": "5",
+    "author": "Μανθος Λαμπρακης",
+    "date": "2026-01-03",
+    "text": "Απο την ομορφη Κρητη... στο πολυ ομορφο Μπερατι... Ενα απιστευτο ταξειδι με παραμονη προτοχρονιας στον ξενωνα Guest  house. Ο οικοδεσποτης Tomor Shehu ηταν παρα πολυ φιλικος και χαμογελαστος με τα δωματια του να ειναι κεντρικα εχοντας ολα τα καφε και φαγαδικα στα ποδια σου.\nΤο δωματιο ηταν αρκετα καλο για αυτο που ψαχναμε.\nΣυγουρα την επομενη φορα που θα παμε θα ειναι σε εσενα αγαπητε Tomor!!!\nΣε ευχατιστουμε για ολλα.",
+    "source": "Google",
+    "stars": 5,
+    "language": "el"
+  },
+  {
+    "propertyId": "5",
+    "author": "Daniel Ninio",
+    "date": "2025-08-10",
+    "text": "Tomor and his wife were the best hosts I’ve ever had in any guesthouse I’ve ever been to.  Period. We’ve experienced great hospitality and great breakfast. He welcomed us with a great smile and lots of love, helped us every day to get a close parking spot, literally standing in an empty spots nearby!\n\nThere’s a mosque really close, but we heard it only once a day on the afternoon, and it didn’t make any sound in the morning. Don’t worry about it!\n\nMoreover, Tomor sent us a lot of explanations about the city’s history and leisure activities. Highly recommended!! Thank you Tomor! ❤️",
+    "source": "Google",
+    "stars": 5,
+    "language": "en"
+  },
+  {
+    "propertyId": "5",
+    "author": "Maria Elisa Zafra Griñán",
+    "date": "2024-10-09",
+    "text": "Un alojamiento excelente! La ubicación inmejorable, en una calle tranquila, a 1' del paseo, especial para dar una vuelta de noche. Tomor, el dueño fue muy amable, nos explicó un poquito la historia de la ciudad y hasta nos enseñó fotos de la crecida del río. Si vuelvo repetiré.",
+    "source": "Google",
+    "stars": 5,
+    "language": "es"
+  },
+  {
+    "propertyId": "5",
+    "author": "Wolfgang Frieß",
+    "date": "2024-09-28",
+    "text": "Tomor ist ein exzellenter Gastgeber. Wir wurden mit Trauben und einer Tasse Mocca und vielen guten Ratschlägen für den Aufenthalt in Berat empfangen. Die Lage in der Altstadt ist bestens, das Zimmer sauber und wohnlich. Eine uneingeschränkte Empfehlung ist auch das Frühstück, unbedingt buchen! Für das Abendessen bietet sich das kleine aber sehr gute Restaurant Mali in der Nähe an.",
+    "source": "Google",
+    "stars": 5,
+    "language": "de"
+  },
+  {
+    "propertyId": "5",
+    "author": "Roberto Colombo",
+    "date": "2024-08-15",
+    "text": "Il posto è in centro all'inizio del quartiere storico Mangalem e a due passi dalla zona pedonale quindi in ottima posizione per visitare la città e scaricare i bagagli.\nTomor (il proprietario) è un esempio di gentilezza e accoglienza albanese sempre disponibile per consigli sulle città. la camera è semplice ma tipica di un'abitazione tipica ottomana con patio esterno per la colazione che consigliamo.",
+    "source": "Google",
+    "stars": 5,
+    "language": "it"
+  },
+  {
+    "propertyId": "5",
+    "author": "nonange",
+    "date": "2024-07-04",
+    "text": "Ottima sistemazione a Barat! La casa é comoda, facile da raggiungere, il signor Tomor, gentilissimo parla italiano e inglese. L'ospitalità é offerta  in stanze con entrate autonome. La super colazione preparata dalla moglie, viene servita sotto un pergolato!",
+    "source": "Google",
+    "stars": null,
+    "language": "it"
+  },
+  {
+    "propertyId": "6",
+    "author": "Jane Levine",
+    "date": "2026-05-11",
+    "text": "Lovely hotel & owner, great views & location. Excellent breakfast. Just bring appropriate footwear for Berat cobblestone streets.",
+    "source": "Google",
+    "stars": 5,
+    "language": "en"
+  },
+  {
+    "propertyId": "6",
+    "author": "Erlind Bega",
+    "date": "2026-05-10",
+    "text": "I sleep very well and the rooms are very prettyy.\nThe owner was so friendly with us and the breakfast was so generous and so delicious.\nThank you so much Joseph and Rovena we definitely come back!!!❤️❤️",
+    "source": "Google",
+    "stars": 5,
+    "language": "en"
+  },
+  {
+    "propertyId": "6",
+    "author": "Alberto Joral Gomez",
+    "date": "2026-05-05",
+    "text": "Hoy día 5 de Mayo paseando por Berat nos encontramos con una bodega para comprar y catar vinos de la Región , nos ha atendido en su establecimiento nuestro ya amigo Josif Prifti, hemos probado sus caldos y hemos hablado de los de mi tierra Rivera del Duero, un completo placer hablar y degustar conociendo su elaboración y vinicultura . Josif muchas gracias por la cata y nos vemos en Valladolid",
+    "source": "Google",
+    "stars": 5,
+    "language": "es"
+  },
+  {
+    "propertyId": "6",
+    "author": "U8898SWandym",
+    "date": "2025-10-05",
+    "text": "Went for the 2025 Berat wine Festival so last-minute booking, excellent 5 ? room guest house with lovely rooms, great view, a fantastic location and very helpful owners / staff. Quiet place but still only 5 - 10 minutes' walk to the town centre. Stayed in Room 4, beautifully furnished, great view, plenty of room and a very comfortable bed. All very clean and well kept. lovely little terrace for breakfast outside with a view if you choose.",
+    "source": "Google",
+    "stars": null,
+    "language": "en"
+  },
+  {
+    "propertyId": "6",
+    "author": "Andy Miller",
+    "date": "2025-10-05",
+    "text": "Perfect location, excellent room; clean and tastefully furnished, very comfortable bed good bathroom. Lovely view south of the river and towards Timori if you stick your neck out the window ! Great breakfast outside on the small terrace,  and super helpful and friendly owners",
+    "source": "Google",
+    "stars": 5,
+    "language": "en"
+  },
+  {
+    "propertyId": "6",
+    "author": "Greis Konini",
+    "date": "2025-08-31",
+    "text": "Traditional establishment with a river view in the heart of Berat’s old city, an unforgettable experience. The building itself is full of character, beautifully preserved with original stonework, wooden beams, and stunning views of the historic Gorica and Mangalem quarters. Location is perfect for exploring Berat on foot, with all the key attractions just a short walk away.\nThe rooms were clean, cozy, and tastefully decorated to reflect the heritage of the area, while still offering all the modern comforts like air conditioning and reliable Wi-Fi.\nThe breakfast was plentiful and absolutely tasty.\nThe owner went above and beyond to accommodate all of our needs.\nAbsolutely recommend!!",
+    "source": "Google",
+    "stars": 5,
+    "language": "en"
+  },
+  {
+    "propertyId": "6",
+    "author": "Gonçalo Ramalho",
+    "date": "2025-08-19",
+    "text": "I cannot say enough good things about this place. We had an amazing experience.\n\nLocation couldn't be better, typical Berat house but not too far from the main road, so you don't need to \"climb\" with your bags. Perfect to walk around Berat and Goriza. The room was amazing, looked carved in stone, and the bed was very comfortable.\n\nThe breakfast was incredible, it was so much we couldn't eat all of it.\n\nBut the best was the people, everyone made us feel very welcome. The owner answered all my questions before we arrived. And while we were there they helped us get to our new destination even after we checked out. We lost our bus and they made calls to find out how we could get to our destiny for our budget.\n\nTrue Albanian kindness that we will never forget.",
+    "source": "Google",
+    "stars": 5,
+    "language": "en"
+  },
+  {
+    "propertyId": "6",
+    "author": "Trejsi Elezi",
+    "date": "2025-07-28",
+    "text": "I had a great stay at Guest House Prifti in the heart of Mangalem. The service was warm and welcoming – the hosts were always ready to help with anything we needed. The rooms were clean, cozy, and had a traditional charm that made the experience even more special. Everything was well maintained, and the location is perfect if you want to explore the old town. Highly recommended for a peaceful and authentic stay in Berat!",
+    "source": "Google",
+    "stars": 5,
+    "language": "en"
+  },
+  {
+    "propertyId": "6",
+    "author": "Mikael Mangold",
+    "date": "2025-07-25",
+    "text": "Wondeful! Very cosy, personal and friendly. Would highly recommend :)",
+    "source": "Google",
+    "stars": 5,
+    "language": "en"
+  },
+  {
+    "propertyId": "6",
+    "author": "arie bendayan",
+    "date": "2025-07-11",
+    "text": "A charming and authentic stay in the heart of Berat!!!\nThis beautiful traditional house is perfectly located in the center of Berat, allowing you to truly feel the city’s unique atmosphere. The rooms are tastefully decorated, comfortable, and equipped with air conditioning and a fridge. The host is exceptionally kind and goes out of their way to ensure a pleasant and memorable stay. A freshly prepared breakfast is included and adds a lovely touch to the experience. Highly recommended for anyone looking for a cozy and authentic stay in Berat!\nJust keep in mind there are some steep stairs to reach the guest house from the street (as everywhere in Berat)",
+    "source": "Google",
+    "stars": 5,
+    "language": "en"
+  },
+  {
+    "propertyId": "7",
+    "author": "Elyan Clement",
+    "date": "2025-09-17",
+    "text": "Réservation de dernières minute pour une nuit ! Nous avons était super bien accueilli et la chambre était très propre avec une superbe vue ! Je recommande ++",
+    "source": "Google",
+    "stars": 5,
+    "language": "fr"
+  },
+  {
+    "propertyId": "7",
+    "author": "maria marques",
+    "date": "2025-09-15",
+    "text": "Chambre confortable avec un balcon pour profiter de la jolie vue sur le vieux Berat. Petit déjeuner parfait. Propriétaire très gentil.",
+    "source": "Google",
+    "stars": 5,
+    "language": "fr"
+  },
+  {
+    "propertyId": "7",
+    "author": "Manon duprécanron",
+    "date": "2025-09-08",
+    "text": "Excellente adresse, propre, proche du centre et avec parking. Mention spéciale pour la terrasse de la chambre du dernier étage avec une vue incroyable sur Berat illuminé.",
+    "source": "Google",
+    "stars": 5,
+    "language": "fr"
+  },
+  {
+    "propertyId": "7",
+    "author": "sarah milcent",
+    "date": "2025-08-14",
+    "text": "Amazing time here, the breakfast is very delicious and the owners are super Nice and helpful ! I highly recomand, Thank you",
+    "source": "Google",
+    "stars": 5,
+    "language": "en"
+  },
+  {
+    "propertyId": "7",
+    "author": "Esther Sulman",
+    "date": "2025-07-30",
+    "text": "Super lieve mensen . En heel hygiënisch .en een mooie uitzicht !!",
+    "source": "Google",
+    "stars": 5,
+    "language": "nl"
+  },
+  {
+    "propertyId": "7",
+    "author": "C. Riemslag",
+    "date": "2025-07-16",
+    "text": "Fijne,  relaxte plek in Berat, de stad van duizend ramen. Het huis en de tuin zijn tot in de puntjes verzorgd. Zwembadje om even af te koelen is top.\nInstructies om het huis te vinden zijn wat onduidelijk. Gewoon in maps intypen en heen rijden. Parkeren in de garage onder het huis",
+    "source": "Google",
+    "stars": 5,
+    "language": "nl"
+  },
+  {
+    "propertyId": "7",
+    "author": "PELLICER Vincent",
+    "date": "2025-07-10",
+    "text": "Une chambre d'hôte excellente ! Un accueil formidable, même si l'accès via le GPS n'est pas des plus facile (il n'indique pas le bon chemin), mais les propriétaires sont disponibles pour vous aider si problème !\nLa chambre que nous avions (dernier étage) avait une climatisation, très propre et une terrasse avec vue exceptionnelle sur le vieux Berat !\nLe plus , une petite piscine, certe en plastique, mais tellement appréciable après une bonne journée de marche sous un soleil de plomb !\nJe recommande donc vivement",
+    "source": "Google",
+    "stars": 5,
+    "language": "fr"
+  },
+  {
+    "propertyId": "8",
+    "author": "Sandy Schröter",
+    "date": "2025-09-30",
+    "text": "Vielen Dank, selbst das Frühstück war perfekt. Sehr gerne wieder 👌",
+    "source": "Google",
+    "stars": 5,
+    "language": "de"
+  },
+  {
+    "propertyId": "8",
+    "author": "Claudia kleines Reich",
+    "date": "2025-09-25",
+    "text": "Auf jeden Fall empfehlenswerte Unterkunft mitten in der Altstadt und super Frühstück",
+    "source": "Google",
+    "stars": 5,
+    "language": "de"
+  },
+  {
+    "propertyId": "8",
+    "author": "Kaja Yun Ringstad",
+    "date": "2025-08-30",
+    "text": "Bodde 2 netter her. Nydelig, stort, rent rom.",
+    "source": "Google",
+    "stars": 5,
+    "language": "no"
+  },
+  {
+    "propertyId": "8",
+    "author": "Katrin Kummer",
+    "date": "2025-08-26",
+    "text": "Ein sehr liebevoll eingerichtetes Zimmer mit großem Bett.Es war alles tipptopp sauber und gepflegt. Wir wurden sehr herzlich empfangen. Das hausgemachte regionale Frühstück war fantastisch.\nDie Lage ist zentral. Zur Promenade sind es nur wenige Gehminuten.\n\nVielen Dank für den schönen Aufenthalt in Berat, liebe Vasilika. Wir kommen gern wieder.\n\nKatrin und Franziska aus Berlin",
+    "source": "Google",
+    "stars": 5,
+    "language": "de"
+  },
+  {
+    "propertyId": "8",
+    "author": "vincent ayala",
+    "date": "2025-08-13",
+    "text": "Super rapport qualité prix et petit déjeuner gargantuesque. Les deux dames sont très gentilles et accueillantes.",
+    "source": "Google",
+    "stars": 5,
+    "language": "fr"
+  },
+  {
+    "propertyId": "8",
+    "author": "susy230563",
+    "date": "2025-03-15",
+    "text": "La guesthouse si trova nella parte vecchia di Berat che dovete raggiungere a piedi lasciando l'auto nei parcheggi esterni al nucleo storico. Abbiamo prenotato a febbraio, per tempo, visto che è uno di quei posti dove bisogna avere fortuna per dormirci.La struttura è gestita da una simpatica signora che lavorando all'estero è riuscita a ristrutturare la vecchia casa natia, mantenendone il fascino e senza snaturare le tradizioni.E' difficile rimanerne delusione vista la cura nei particolari, nella bianchieria, negli arredamenti che abbiamo trovato.Le camere affacciano sul cortile comune e le finestre della camera in cui abbiamo dormito, sul centro storico e sul fiume Osum. La colazione inclusa era luculliana e abbontantissima",
+    "source": "Google",
+    "stars": null,
+    "language": "it"
+  },
+  {
+    "propertyId": "9",
+    "author": "vanessa gautheron",
+    "date": "2026-04-27",
+    "text": "Vue magnifique et lieu paisible. Très agréable pour une petite pause. Très bon service et nourriture très bien aussi.",
+    "source": "Google",
+    "stars": 5,
+    "language": "fr"
+  },
+  {
+    "propertyId": "9",
+    "author": "Celina",
+    "date": "2025-09-19",
+    "text": "Der Weg zum Hotel ist etwas steil aber mit gesunden Füßen leicht machbar und auch nicht allzu lang. Empfangen wird man von einer süßen Katze und einem total netten und freundlichen Inhaber. Das Zimmer ist sauber (mit Klimaanlage) und hat wunderschöne Aussicht. Zusätzlich wird man gefragt wann man morgens frühstücken möchten. Das Frühstück, welches im Preis von ca. 30€  inbegriffen ist, beinhaltet: Ei, Tomate, Gurke, Traube, Banane, Brot und eiskalten Orangen Saft. Man befindet sich sehr zentral in der Stadt. Ein Ausflug zur Burg ist vom Hotel aus Optimal und nicht allzu weit. Bezahlen kann man am nächsten morgen in Euro oder Lek.",
+    "source": "Google",
+    "stars": 5,
+    "language": "de"
+  },
+  {
+    "propertyId": "9",
+    "author": "M L",
+    "date": "2025-09-15",
+    "text": "Situé en haut de la vielle ville de Berat, la guesthouse peut être difficile d’accès pour certaines personnes. Mais une fois là haut, la vue sur la ville est belle. Notre chambre était spacieuse, et donnait justement sur ce panorama urbain. L’hôtel aurait donc tout pour plaire si la chambre était un peu mieux dépoussiérée, au niveau du lit et des fenêtres notamment. Il manque une ampoule dans le lustre. Mais ceci n'est rien. Le gros problème est l’indifférence totale des gérants pour leurs clients. Arrivé à l’hôtel, notre chambre n’était pas prête. Pas de soucis ça arrive. On nous a indiqué la terrasse du bar pour patienter mais personne ne nous a proposé une boisson alors qu'il faisait très chaud dehors.\nCoté petit dej, il faut indiquer la veille l’heure que l’on souhaite prendre le petit déjeuner du lendemain. (Entre 8h et 9h30) Le petit-déjeuner (compris dans le tarif) se résume pour 2 personnes à:\n-1 banane\n-2 assiettes de tomates et concombres -3 tranches de pain plus ou moins sec\n-pichet de jus d’orange industriel.\nPas de café ( c’est en supplément) de beurre ,confiture ou quelque chose à mettre sur le pain.\nMais c’est surtout leur attitude qui nous a dérangée. On avait l’impression le matin de les réveiller pour qu'ils nous servent le petit déj (encore en pyjama?) Pas un bonjour, pas un mot... et ils repartent (se coucher?) à peine les plats servis.\nNous n’avons vu personne pour le check out, heureusement nous avons eu la présence d’esprit de payer avant!\n\nÉvidement ce commentaire contraste avec les précédents mais c’est ce que nous avons vécu entre le 13 et le 15 septembre 2025. Je ne peux que recommander de trouver mieux à proximité.",
+    "source": "Google",
+    "stars": 2,
+    "language": "fr"
+  },
+  {
+    "propertyId": "9",
+    "author": "Ivana a",
+    "date": "2025-09-10",
+    "text": "Sehr hübsch, wunderbare Aussicht. Man kriegt etwas gratis Frühstück: Tomaten, Gurke, Spiegelei, Banane und Baklava. Man kann auch abends vegan essen, und zwar die gefüllte Paprika und Aubergine. Das Zimmer und das Personal sind nett.",
+    "source": "Google",
+    "stars": 5,
+    "language": "de"
+  },
+  {
+    "propertyId": "9",
+    "author": "Adventure girly",
+    "date": "2025-08-02",
+    "text": "We had went for some drinks but were never attended or even greeted. Amazing view but terrible service. We left to the place next door and received immediate service.",
+    "source": "Google",
+    "stars": 3,
+    "language": "en"
+  },
+  {
+    "propertyId": "10",
+    "author": "muhammed yeşilkaya",
+    "date": "2025-10-12",
+    "text": "The view is very good and the atmosphere of rooms are very otantic. It make me feel like a movie of 1970's. And also kind a dream horror movie. I loved that place.",
+    "source": "Google",
+    "stars": 5,
+    "language": "en"
+  },
+  {
+    "propertyId": "10",
+    "author": "Samrudhi Tidke",
+    "date": "2025-10-11",
+    "text": "Highly recommend for anyone visiting berat, very helpful host. Near to the city centre and berat castle, only walking distance. Very clean property and beautiful view.",
+    "source": "Google",
+    "stars": 5,
+    "language": "en"
+  },
+  {
+    "propertyId": "10",
+    "author": "757tykaw",
+    "date": "2025-09-12",
+    "text": "The house was super cozy with an amazing view. The owner of the house was very helpful by informing us in advance that google with not direct us correctly so they gave additional information to find the place. They also recommended some restaurants in the area which were really good. The staff was very nice and helpful overall I would definitely recommend staying here. The only thing is you need to be good driver (this applies to Albania in general) as the parking area is really tight especially if their are more cars and the entrance is on a bumpy road.",
+    "source": "Google",
+    "stars": null,
+    "language": "en"
+  },
+  {
+    "propertyId": "10",
+    "author": "Czárán Tamás",
+    "date": "2025-09-07",
+    "text": "Villa Rosa is an excelllent place to stay in Berat, well equipped, and with a wonderful view. Approaching it by car is a bit of a hassle, but the instructions given by the host are really helpful. Parking the car below the house, close to the center is a good alternative option. We loved to stay here, thank you, File!",
+    "source": "Google",
+    "stars": 5,
+    "language": "en"
+  },
+  {
+    "propertyId": "10",
+    "author": "Szymon Ruchała",
+    "date": "2025-08-12",
+    "text": "Kozacko ale hardcore wjazd i parking",
+    "source": "Google",
+    "stars": 5,
+    "language": "pl"
+  },
+  {
+    "propertyId": "10",
+    "author": "Lucas Van Wijmeersch",
+    "date": "2025-07-19",
+    "text": "Magnifique terrasse avec une vue imprenable — idéale pour une soirée entre amis inoubliable !\nLa chambre est confortable et bien équipée, avec tout le nécessaire pour un séjour agréable.\nL’accès peut s’avérer un peu compliqué avec une voiture basse, mais un parking sécurisé est disponible.\nAccueil chaleureux et sympathique, ce qui ajoute à la qualité de l’expérience.",
+    "source": "Google",
+    "stars": 5,
+    "language": "fr"
+  },
+  {
+    "propertyId": "11",
+    "author": "Nair Emilia Chamut",
+    "date": "2026-05-20",
+    "text": "Un hermoso lugar para hospedarte. Tienen las camas más cómodas del mundo. La vista es increíble. La familia fue muy amable y muy servicial, el padre de Mario nos hizo el fuego para que usemos en la barbacoa y Bella nos prestó platos, y nos hizo un super queso albanés para untar. Mario también estuvo siempre muy atento. Súper recomendable 💙",
+    "source": "Google",
+    "stars": 5,
+    "language": "es"
+  },
+  {
+    "propertyId": "11",
+    "author": "Alessio Sebastiani",
+    "date": "2026-05-17",
+    "text": "Il posto è una piccola chicca a 5 Min di macchina dal centro di Berat, locale isolato e tranquillo da cui si può godere di un alba sulle montagne, la colazione è stata ottima e la ragazza con cui abbiamo parlato è stata simpaticissima e di un carattere puro , molto ospitale, ci tornerei",
+    "source": "Google",
+    "stars": 5,
+    "language": "it"
+  },
+  {
+    "propertyId": "11",
+    "author": "Fabjan Daja",
+    "date": "2026-05-03",
+    "text": "Very clean rooms. Breathtaking view. The people are very friendlly.",
+    "source": "Google",
+    "stars": 5,
+    "language": "en"
+  },
+  {
+    "propertyId": "11",
+    "author": "Luljeta Totaj",
+    "date": "2026-04-26",
+    "text": "It was a great experince and the view was stunning great value",
+    "source": "Google",
+    "stars": 5,
+    "language": "en"
+  },
+  {
+    "propertyId": "11",
+    "author": "andi hoxha",
+    "date": "2026-04-16",
+    "text": "I had a great stay at Guest House Mario. The host was very welcoming and made me feel comfortable from the moment I arrived. The highlight of the property is definitely the view — absolutely stunning and something I’ll remember. Overall, a relaxing and enjoyable experience, and I’d happily stay here again",
+    "source": "Google",
+    "stars": 5,
+    "language": "en"
+  },
+  {
+    "propertyId": "11",
+    "author": "800k views",
+    "date": "2026-04-15",
+    "text": "What a hidden gem! The views from the property are stunning, and the overall atmosphere is so relaxing. You can tell the owners put a lot of care into the decor and upkeep of the place. It was the perfect home base for my trip. If you're looking for a clean, stylish, and welcoming place to stay, look no further",
+    "source": "Google",
+    "stars": 5,
+    "language": "en"
+  },
+  {
+    "propertyId": "11",
+    "author": "neri rapaj",
+    "date": "2026-04-15",
+    "text": "Clean, comfortable, and well-located. Friendly host and good value. Would stay again.",
+    "source": "Google",
+    "stars": 5,
+    "language": "en"
+  },
+  {
+    "propertyId": "11",
+    "author": "Franko Vogli",
+    "date": "2026-04-13",
+    "text": "Stayed here for a few nights and wow… everything was just right, super nice staff and the view was crazy good",
+    "source": "Google",
+    "stars": 5,
+    "language": "en"
+  },
+  {
+    "propertyId": "11",
+    "author": "Kostika Qafzezi",
+    "date": "2026-04-13",
+    "text": "Came here with my wife for a weekend and had to extend the stay.Beautiful views.Very comfortable and cozy ambient and very helpful and welcoming host.City is also beautiful and very close to the house.Would 100% recommend.",
+    "source": "Google",
+    "stars": 5,
+    "language": "en"
+  },
+  {
+    "propertyId": "11",
+    "author": "Agnes Roche",
+    "date": "2026-04-09",
+    "text": "Petite chambre, propre, belle vue... par contre pour y accéder en voiture c'est VRAIMENT folklo!!! Mini rue pavée,  très étroite et raide,  supposée à double sens donc on prie pour ne pas se retrouver face à une autre voiture!!! Pas mal d'aboiement de chiens la nuit....",
+    "source": "Google",
+    "stars": 4,
+    "language": "fr"
+  },
+  {
+    "propertyId": "12",
+    "author": "Elestja Aliaj",
+    "date": "2026-05-17",
+    "text": "Very kind hosts , friendly and nice . Very cozy rooms and very comfortable . Everthing was clean and the location was really nice , near the castle",
+    "source": "Google",
+    "stars": 5,
+    "language": "en"
+  },
+  {
+    "propertyId": "12",
+    "author": "Moritz Seeber",
+    "date": "2026-05-10",
+    "text": "Marjo and his family were the kindest and most helpful hosts my girlfriend and I have ever met. From the very beginning, they made us feel truly welcome and at home. The accommodation was wonderful as well — clean, comfortable, and perfectly located. We really enjoyed our stay in Albania and will definitely come back here on our next trip. Thank you again for the amazing hospitality!",
+    "source": "Google",
+    "stars": 5,
+    "language": "en"
+  },
+  {
+    "propertyId": "12",
+    "author": "Robert Niedziela",
+    "date": "2026-05-08",
+    "text": "Świetna lokalizacja. Cudowni właściciele. Pyszne śniadanie\nPolecam",
+    "source": "Google",
+    "stars": 5,
+    "language": "pl"
+  },
+  {
+    "propertyId": "12",
+    "author": "JUAN JAVIER DEL RIO SALANOVA",
+    "date": "2026-04-09",
+    "text": "Ubicación muy chula, gente realmente amable y pendientes de todo desayuno muy agradable, estuvimos 2 noches lo único aparcar puede ser un poco enfarragoso. Por lo demás increíble",
+    "source": "Google",
+    "stars": 5,
+    "language": "es"
+  },
+  {
+    "propertyId": "12",
+    "author": "Koo Ys",
+    "date": "2025-09-30",
+    "text": "Wonderful choice, tasty breakfast well-prepared by the host.  Marjo and his parent is nice!!  Place is clean and just beneath the castle, perfect location and it’s still at an affordable price!!  Would highly recommend it",
+    "source": "Google",
+    "stars": 5,
+    "language": "en"
+  },
+  {
+    "propertyId": "12",
+    "author": "Oriol Gasset",
+    "date": "2025-09-05",
+    "text": "Nuestra estancia en House Marjo fue realmente especial. Desde el primer momento nos sentimos como en casa gracias a la amabilidad y cercanía de los dueños, un matrimonio encantador que nos trató con un cariño enorme. La casa es preciosa, muy limpia y cuidada hasta el más mínimo detalle, con todo lo necesario para descansar y disfrutar de la ciudad.\n\nLas vistas al castillo son espectaculares y la ubicación es perfecta, a pocos pasos de todo lo que uno quiere ver en Berat. El desayuno estaba riquísimo, preparado con dedicación y servido con una sonrisa.\n\nPero lo que más nos gustó, sin duda, fue el trato humano: esa calidez, esas atenciones y esa sensación de que realmente se preocupan porque tu estancia sea agradable. Fue un lugar donde no solo dormimos, sino donde nos llevamos un recuerdo muy bonito de las personas que lo hacen posible",
+    "source": "Google",
+    "stars": 5,
+    "language": "es"
+  },
+  {
+    "propertyId": "12",
+    "author": "Isabelle xoxo",
+    "date": "2025-07-10",
+    "text": "Wundervolle Gastgeber in einer perfekten Lage, waren eine Nacht dort um und die Burg sowie die Altstadt anzusehen. Zimmer hat leider etwas nach Kanal gerochen, war aber erträglich. Frühstück wunderbar und sehr persönlich auf der Terasse.",
+    "source": "Google",
+    "stars": 5,
+    "language": "de"
+  },
+  {
+    "propertyId": "12",
+    "author": "Jonas Call",
+    "date": "2025-07-04",
+    "text": "Tolle Unterkunft direkt an der Burg von Berat. Parkplatz auf dem Grundstück vorhanden, ich empfehle rückwärts einzufahren :). Badezimmer neu und das Frühstück morgens war das Beste was wir in ganz Albanien hatten. Definitiv Empfehlung",
+    "source": "Google",
+    "stars": 5,
+    "language": "de"
+  },
+  {
+    "propertyId": "13",
+    "author": "Kenan Arat",
+    "date": "2024-08-05",
+    "text": "The hosts were so friendly, you do feel like you are at home! The breakfast is amazing and while you have it, you can enjoy the nice you view from the terrace!",
+    "source": "Google",
+    "stars": 5,
+    "language": "en"
+  },
+  {
+    "propertyId": "13",
+    "author": "Rum",
+    "date": "2024-02-11",
+    "text": "We went during the off season on Feb 2024. Amazing breakfast. Friendly host. Great views. Clean rooms. Free parking along the main street. 300 year old family owned albanian home. Most importantly, great hosts, who treated us like their kids. We had to climb a few ten metres with heavy luggages. But, believe me, it is absolutely worth it. Clean five stars.",
+    "source": "Google",
+    "stars": 5,
+    "language": "en"
+  },
+  {
+    "propertyId": "13",
+    "author": "Hermann Belous",
+    "date": "2023-10-25",
+    "text": "Аутентичный гестхаус. Любезная хозяйка. Прекрасная атмосфера",
+    "source": "Google",
+    "stars": 5,
+    "language": "ru"
+  },
+  {
+    "propertyId": "13",
+    "author": "ianx17489",
+    "date": "2023-10-17",
+    "text": "What a wonderful guest house, with fantastic terrace view's over the river and Gorica. The hosts gave us such a warm and friendly welcome, incuding some raki and homemade candied fruits. The room was a reasonable size and once again nice views across the river. Really comfortable bed. Breakfast on the terrace was a joy, what a lovely way to start the day. Breakfast was very good and if you love home made jams you are in for a treat.|The castle is a steep fifteen minute climb up from Timo's but very doable.|There are many restaurants on the doorstep and local the bus passes right outside to the main bus terminus. The owner even let us do a load of washing for a small extra charge. |In summary, we are delighted that we chose Timo's for our two night stay in Berat.",
+    "source": "Google",
+    "stars": null,
+    "language": "en"
+  },
+  {
+    "propertyId": "13",
+    "author": "Michael Heim",
+    "date": "2023-10-15",
+    "text": "Wunderbar. Sehr zu empfehlen. Schöne Zimmer, freundliche Gastgeber, perfekte Lage.",
+    "source": "Google",
+    "stars": 5,
+    "language": "de"
+  },
+  {
+    "propertyId": "13",
+    "author": "Gilles Decaix",
+    "date": "2023-10-07",
+    "text": "Hôtes souriant et accueil parfait\nTrès bon emplacement pour visiter la vieille ville",
+    "source": "Google",
+    "stars": 4,
+    "language": "fr"
+  },
+  {
+    "propertyId": "13",
+    "author": "Mayline Bec",
+    "date": "2023-09-20",
+    "text": "Wir wurden sehr herzlich begrüßt.\nEs gab selbstgemachten Raki und eingelegtes Obst.\nDas Zimmer war super sauber und top ausgestattet.\nDas Haus ist sehr schön.\nDas Frühstück war mehr als ausreichend und der Blick auf Berat - ein Traum.\nWir wären gerne länger geblieben, aber leider waren alle Zimmer schon ausgebucht.\nWir können diese Unterkunft von Herzem empfehlen.",
+    "source": "Google",
+    "stars": 5,
+    "language": "de"
+  },
+  {
+    "propertyId": "13",
+    "author": "EC1000",
+    "date": "2023-07-25",
+    "text": "Immersion in Albanian hospitality. Most gracious hosts in a spotless house with a beautiful view. |Room was comfortable with crisp white sheets and towels. |Traditional breakfast served in a beautiful terrace overlooking the river. Table was nicely set. Attention to detail is clearly seen all round. |We highly recommend.",
+    "source": "Google",
+    "stars": null,
+    "language": "en"
+  },
+  {
+    "propertyId": "13",
+    "author": "Meli LH",
+    "date": "2023-07-25",
+    "text": "Los dueños son un encanto y te reciben con licores y frutas en almíbar, hecha por ellos y que además se sientan a comerlo contigo. La casa es muy bonita y bien ubicada y la habitación es perfecta. Lo recomiendo 100%",
+    "source": "Google",
+    "stars": 5,
+    "language": "es"
+  },
+  {
+    "propertyId": "14",
+    "author": "HelloYouAreBugged",
+    "date": "2026-05-01",
+    "text": "Das Zimmer und die Location waren wirklich wunderschön, und die Aussicht vom Dach macht dem Namen alle Ehre. Unsere Gastgeberin war herzlich, hilfsbereit und hat uns mit vielen interessanten Geschichten über Berat begeistert, was den Aufenthalt wirklich besonders gemacht hat.\nEin paar Dinge, die zukünftigen Gästen helfen könnten: Das Frühstück wurde etwas später als angegeben serviert, was bei einem engen Zeitplan herausfordernd sein kann. Außerdem lohnt es sich, bei der Buchung genau auf die Fotos zu achten, da diese zeigen, welches Badezimmer dem jeweiligen Zimmer zugeordnet ist und es ist zu beachten, dass die Badezimmer sich nicht direkt beim Zimmer befinden. Zudem gab es widersprüchliche Aussagen bezogen auf die Badezimmer, laut Gastgeberin und den Hausregeln werden die Bäder geteilt, jedoch sagte uns der Gastgeber, dass die diejenigen Badezimmer abgeschlossen werden, die nicht zur Buchung gehören.Etwas mehr Transparenz hierzu im Allgemeinen wäre hilfreich gewesen.\nInsgesamt ein schöner Ort mit viel Charme, und mit etwas mehr Kommunikation im Allgemeinen wäre es ein rundum perfektes Erlebnis gewesen",
+    "source": "Google",
+    "stars": 4,
+    "language": "de"
+  },
+  {
+    "propertyId": "14",
+    "author": "Stephan B",
+    "date": "2025-10-31",
+    "text": "Wer eine authentische Unterkunft in Berat sucht, wird hier eine tolle Zeit haben.\nWir haben uns ein Bad mit anderen Gästen geteilt, obwohl wir ein Zimmer mit eigenem Bad gebucht haben. Auf Nachfrage hat uns der Gastgeber ein entsprechendes Zimmer angeboten, wir lehnten dann aber ab, da uns das Zimmer mit Stadtblick dann doch besser gefallen hat.😊\nDas Bad war stets sauber, wenn auch 2:1 (Dusche & WC)\nDie Zimmer waren zeitgenössisch gestaltet, wir haben uns sehr wohl gefühlt.\nDer Gastgeber war immer freundlich, hilfsbereit und hatte Antworten auf touristische Fragen zur Kultur und Traditionen.\n\nWer nicht minimalistisch ist, sollte ins Hotel gehen. Wer aber ein authentisches Gasthaus mit tollen Eindrücken sucht, wird hier sehr glücklich 😊\n\nEs wurde ein Frühstück serviert, auf Nachfrage gab es auch immer Nachschub. Fußläufig war alles in zentraler Nähe.",
+    "source": "Google",
+    "stars": 5,
+    "language": "de"
+  },
+  {
+    "propertyId": "14",
+    "author": "Alexandra S.",
+    "date": "2025-10-27",
+    "text": "Wir hatten einen angenehmen Aufenthalt und haben die Aussicht und die Lage im historischen Zentrum Berats genossen. Wichtig zu erwähnen ist, dass es weit oben liegt. Also besser keinen großen Koffer mitbringen, sonder mit leichtem Gepäck anreisen. Notfalls kann aber in Absprache und gegen Bezahlung jemand kommen und beim Tragen helfe. Der Gastgeber Erald war stets erreichbar und hat uns sogar zum Bus Terminal gefahren. Beim Frühstück darf man kein Hotel-Niveau erwarten, aber es gibt Gemüse, Eier, Butter und selbstgemachte Marmelade mit Kaffee oder Tee. Es hat auf jeden Fall altertümlichen Charme, weil es ein historisches Gebäude ist - also keine moderne Unterkunft erwarten :) uns hat es gefallen :)",
+    "source": "Google",
+    "stars": 5,
+    "language": "de"
+  },
+  {
+    "propertyId": "14",
+    "author": "Sara Bąk",
+    "date": "2025-10-11",
+    "text": "250 letni dom wielopokoleniowy zlokalizowany u wzgórz Beratu, oferuje piękne widoki na zabytkowe miasto. Gospodarz przygotował dla nas śniadanie- proste ale z bardzo dobrej jakości lokalnych produktów. Polecam, świetne doświadczenie",
+    "source": "Google",
+    "stars": 5,
+    "language": "pl"
+  },
+  {
+    "propertyId": "14",
+    "author": "Tim Rosseburg",
+    "date": "2025-09-30",
+    "text": "Wir haben hier eine Nacht verbracht und unsere Erfahrung war leider enttäuschend. Obwohl die Unterkunft auf Booking.com sehr gut bewertet ist, können wir das nicht nachvollziehen.\n\nDas Zimmer, das wir bekamen, war nicht das ursprünglich gebuchte, sondern wurde uns „außerhalb der Plattform“ angeboten. Dadurch war es uns nicht möglich, über Booking.com eine Bewertung abzugeben.\n\nBei Regen tropfte es durch die Decke.\n\nEs gab zunächst kein Frühstück – erst nach Nachfrage wurde etwas serviert. Dieses war allerdings sehr dürftig und minimalistisch.\n\nDie Bezahlung musste bar erfolgen. Das Rückgeld erhielten wir nicht in der Landeswährung (Lek), sondern in Euro. Auf Nachfrage reagierte der Gastgeber unfreundlich.\n\nWLAN hat nur zeitweise funktioniert.\n\nIm Zimmer roch es stark nach Mäuse-Urin.\n\nDas Badezimmer liegt außerhalb des Zimmers und wird von mehreren Gästen genutzt (das war zwar beschrieben, sollte aber erwähnt werden).\n\nDas Mobiliar ist sehr alt; u. a. ein alter Sessel mit einem verschlissenen Stofftier.\n\nDie Decken sind sehr niedrig – man stößt sich schnell den Kopf.\n\nDer Gastgeber war nicht so freundlich und hilfsbereit, wie auf Booking beschrieben. Er wirkte eher zurückhaltend und nicht wirklich unterstützend.\n\nAlles in allem würden wir die Unterkunft nicht weiterempfehlen.",
+    "source": "Google",
+    "stars": 2,
+    "language": "de"
+  },
+  {
+    "propertyId": "14",
+    "author": "GBH _",
+    "date": "2025-06-28",
+    "text": "Charming antique guesthouse in a fantastic central location in Berat. The owner is extremely kind and helpful, which made our stay even more enjoyable. Just be aware that reaching the guesthouse involves a steep climb.\n\nA few small downsides: the toilet in our specific room was very tiny and there was no bidet. Also, there was no trash can in the room, which would have been a useful addition. These small touches would have made the experience even better.",
+    "source": "Google",
+    "stars": 4,
+    "language": "en"
+  },
+  {
+    "propertyId": "14",
+    "author": "Harry Payne",
+    "date": "2025-06-06",
+    "text": "Very pleasant stay. Host was great, view from the room was amazing and really nice location near lots of authentic bars and restaurants",
+    "source": "Google",
+    "stars": 5,
+    "language": "en"
+  },
+  {
+    "propertyId": "15",
+    "author": "Susie Manshande",
+    "date": "2026-05-02",
+    "text": "Great communication, thank you!",
+    "source": "Google",
+    "stars": 5,
+    "language": "en"
+  },
+  {
+    "propertyId": "15",
+    "author": "Brisilda Mana",
+    "date": "2025-11-11",
+    "text": "very good conditions. I was satisfied. I will come back to visit again.",
+    "source": "Google",
+    "stars": 5,
+    "language": "en"
+  },
+  {
+    "propertyId": "15",
+    "author": "edwin de rooden",
+    "date": "2025-09-11",
+    "text": "Super en mooi appartement, perfecte bedden en goede kussens, rustig gelegen in een traditionele woonwijk",
+    "source": "Google",
+    "stars": 5,
+    "language": "nl"
+  },
+  {
+    "propertyId": "15",
+    "author": "Zwiqqle",
+    "date": "2025-06-21",
+    "text": "Sehr schöne Unterkunft! Der Gastgeber war ebenfalls sehr nett & half uns bei der Kommunikation mit dem Vermieter unseres Mietwagens! Wir kommen sehr gerne wieder",
+    "source": "Google",
+    "stars": 5,
+    "language": "de"
+  },
+  {
+    "propertyId": "15",
+    "author": "Iratxe Martin",
+    "date": "2024-12-25",
+    "text": "El durño majisimo , te ayuda en todo , lugar agradable",
+    "source": "Google",
+    "stars": 5,
+    "language": "es"
+  }
 ]
