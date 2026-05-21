@@ -85,14 +85,12 @@ interface PolaroidPhotoProps {
   caption: string;
   className?: string;
   rotation?: string;
-  onClick?: () => void;
 }
 
-function PolaroidPhoto({ src, alt, caption, className = '', rotation = 'rotate-0', onClick }: PolaroidPhotoProps) {
+function PolaroidPhoto({ src, alt, caption, className = '', rotation = 'rotate-0' }: PolaroidPhotoProps) {
   return (
     <div
-      onClick={onClick}
-      className={`group cursor-pointer bg-white border border-[#e9e8e5] p-3 pb-7 shadow-[0_8px_30px_rgba(26,26,26,0.04)] hover:shadow-[0_20px_40px_rgba(26,26,26,0.08)] hover:-translate-y-2 hover:scale-[1.03] transition-all duration-500 ease-out hover:z-30 select-none ${rotation} ${className}`}
+      className={`group bg-white border border-[#e9e8e5] p-3 pb-7 shadow-[0_8px_30px_rgba(26,26,26,0.04)] hover:shadow-[0_20px_40px_rgba(26,26,26,0.08)] hover:-translate-y-2 hover:scale-[1.03] transition-all duration-500 ease-out hover:z-30 select-none ${rotation} ${className}`}
     >
       <div className="relative w-full aspect-square overflow-hidden bg-neutral-50">
         <img
@@ -116,6 +114,7 @@ export default function HomePage() {
   const [selectedMessageId, setSelectedMessageId] = useState<string | null>(null);
   const [conciergeQuery, setConciergeQuery] = useState('');
   const [bottomQuery, setBottomQuery] = useState('');
+  const [conciergeTab, setConciergeTab] = useState<'chat' | 'properties'>('chat');
 
   // Global legacy states for Discover mode Curation Workspace fallback
   const [events, setEvents] = useState<AgentEvent[]>([]);
@@ -162,6 +161,7 @@ export default function HomePage() {
     setIsRunning(true);
     setEvents([]);
     setProperties([]);
+    setConciergeTab('chat');
 
     const timestamp = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 
@@ -267,6 +267,9 @@ export default function HomePage() {
         )
       );
       setIsRunning(false);
+      if (currentProperties.length > 0) {
+        setConciergeTab('properties');
+      }
 
     } catch (err) {
       const errorMessage = String(err);
@@ -321,7 +324,7 @@ export default function HomePage() {
   return (
     <>
       {/* Top NavBar */}
-      <nav className="fixed bg-surface/90 backdrop-blur-md top-0 border-b border-outline-variant/30 w-full h-20 px-margin-mobile md:px-margin-desktop z-50 transition-all duration-200">
+      <nav className="hidden md:block fixed bg-surface/90 backdrop-blur-md top-0 border-b border-outline-variant/30 w-full h-20 px-margin-mobile md:px-margin-desktop z-50 transition-all duration-200">
         <div className="flex justify-between items-center w-full h-full max-w-container-max mx-auto">
           <div 
             onClick={() => setMode('discover')} 
@@ -365,10 +368,42 @@ export default function HomePage() {
 
       {/* Main Content Area */}
       {mode === 'concierge' ? (
-        <div className="flex-grow flex flex-col md:flex-row w-full max-w-container-max mx-auto h-[calc(100vh-80px)] pt-20 overflow-hidden">
+        <div className="flex-grow flex flex-col md:flex-row w-full max-w-container-max mx-auto h-[calc(100dvh-80px)] md:h-[calc(100dvh-80px)] mt-0 md:mt-20 overflow-hidden">
+          {/* Mobile Segmented Tab Selector */}
+          <div className="md:hidden flex p-3 bg-surface-container-low border-b border-outline-variant/30 justify-center items-center gap-2 w-full">
+            <button
+              onClick={() => setConciergeTab('chat')}
+              className={`flex-1 py-2.5 text-center rounded-full text-xs uppercase font-bold tracking-wider transition-all duration-300 ${
+                conciergeTab === 'chat'
+                  ? 'bg-primary text-on-primary shadow-md'
+                  : 'text-on-surface-variant/75 hover:bg-surface-container-high'
+              }`}
+            >
+              Chat Concierge
+            </button>
+            <button
+              onClick={() => setConciergeTab('properties')}
+              className={`flex-1 py-2.5 text-center rounded-full text-xs uppercase font-bold tracking-wider transition-all duration-300 flex items-center justify-center gap-1.5 ${
+                conciergeTab === 'properties'
+                  ? 'bg-primary text-on-primary shadow-md'
+                  : 'text-on-surface-variant/75 hover:bg-surface-container-high'
+              }`}
+            >
+              Curated Stays
+              {selectedMessageProperties.length > 0 && (
+                <span className={`px-2 py-0.5 rounded-full text-[9px] font-bold ${
+                  conciergeTab === 'properties' ? 'bg-white text-primary' : 'bg-primary text-white'
+                }`}>
+                  {selectedMessageProperties.length}
+                </span>
+              )}
+            </button>
+          </div>
           
           {/* Left Column: Chat Thread (35%) */}
-          <aside className="w-full md:w-[35%] flex flex-col border-r border-outline-variant/50 bg-surface-bright h-full overflow-hidden">
+          <aside className={`w-full md:w-[35%] flex flex-col border-r border-outline-variant/50 bg-surface-bright flex-1 md:flex-none md:h-full min-h-0 overflow-hidden ${
+            conciergeTab === 'chat' ? 'flex' : 'hidden md:flex'
+          }`}>
             {/* Chat Header (Mobile Only) */}
             <div className="md:hidden p-4 border-b border-outline-variant/50 flex items-center justify-between">
               <h1 className="font-headline-md text-headline-md text-on-surface">Concierge</h1>
@@ -378,7 +413,7 @@ export default function HomePage() {
             </div>
 
             {/* Chat Messages */}
-            <div className="flex-grow overflow-y-auto p-6 space-y-6 custom-scrollbar pb-24 md:pb-6">
+            <div className="flex-grow overflow-y-auto p-4 md:p-6 space-y-4 md:space-y-6 custom-scrollbar pb-6 md:pb-6">
               {/* Today Badge */}
               <div className="text-center my-2">
                 <span className="font-label-sm text-label-sm text-on-surface-variant/75 uppercase tracking-wider bg-surface-container-low px-4 py-1.5 rounded-full border border-outline-variant/20">
@@ -476,7 +511,7 @@ export default function HomePage() {
             </div>
 
             {/* Chat Input Area */}
-            <div className="p-6 bg-surface-bright pb-safe border-t border-outline-variant/30 z-10 shadow-[0_-4px_24px_rgba(26,26,26,0.02)]">
+            <div className="p-4 md:p-6 bg-surface-bright pb-safe border-t border-outline-variant/30 z-10 shadow-[0_-4px_24px_rgba(26,26,26,0.02)]">
               <form onSubmit={handleConciergeSubmit} className="relative w-full max-w-md mx-auto">
                 <input 
                   type="text"
@@ -502,7 +537,9 @@ export default function HomePage() {
           </aside>
 
           {/* Right Column: Property Grid (65%) */}
-          <main className="w-full md:w-[65%] p-6 md:p-10 overflow-y-auto bg-surface-container-lowest h-full custom-scrollbar pb-32 md:pb-10">
+          <main className={`w-full md:w-[65%] p-6 md:p-10 overflow-y-auto bg-surface-container-lowest flex-1 md:flex-none md:h-full min-h-0 custom-scrollbar pb-10 ${
+            conciergeTab === 'properties' ? 'block' : 'hidden md:block'
+          }`}>
             <header className="mb-8 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
               <div>
                 <h2 className="font-headline-lg text-headline-lg text-on-surface">Curated for You</h2>
@@ -537,7 +574,7 @@ export default function HomePage() {
         </div>
       ) : (
         /* Discover Mode (Landing Page View) */
-        <main className="flex-grow flex flex-col pt-20">
+        <main className="flex-grow flex flex-col pt-0 md:pt-20">
           
           {/* Hero Section */}
           <section 
@@ -550,48 +587,42 @@ export default function HomePage() {
               alt={POLAROIDS[0].alt}
               caption={POLAROIDS[0].caption}
               rotation="rotate-[-6deg]"
-              className="absolute top-[6%] left-[-4%] w-[200px] lg:w-[240px] hidden lg:block opacity-40 hover:opacity-100 hover:rotate-[-2deg] transition-all duration-500"
-              onClick={() => handleSearch(POLAROIDS[0].query)}
+              className="absolute top-[6%] left-[-4%] w-[130px] lg:w-[170px] hidden lg:block opacity-40 hover:opacity-100 hover:rotate-[-2deg] transition-all duration-500"
             />
             <PolaroidPhoto
               src={POLAROIDS[1].src}
               alt={POLAROIDS[1].alt}
               caption={POLAROIDS[1].caption}
               rotation="rotate-[5deg]"
-              className="absolute top-[8%] right-[-4%] w-[210px] lg:w-[250px] hidden lg:block opacity-40 hover:opacity-100 hover:rotate-[2deg] transition-all duration-500"
-              onClick={() => handleSearch(POLAROIDS[1].query)}
+              className="absolute top-[8%] right-[-4%] w-[140px] lg:w-[180px] hidden lg:block opacity-40 hover:opacity-100 hover:rotate-[2deg] transition-all duration-500"
             />
             <PolaroidPhoto
               src={POLAROIDS[2].src}
               alt={POLAROIDS[2].alt}
               caption={POLAROIDS[2].caption}
               rotation="rotate-[-3deg]"
-              className="absolute top-[44%] left-[-5%] w-[190px] lg:w-[230px] hidden xl:block opacity-35 hover:opacity-100 hover:rotate-0 transition-all duration-500"
-              onClick={() => handleSearch(POLAROIDS[2].query)}
+              className="absolute top-[44%] left-[-5%] w-[120px] lg:w-[160px] hidden xl:block opacity-35 hover:opacity-100 hover:rotate-0 transition-all duration-500"
             />
             <PolaroidPhoto
               src={POLAROIDS[3].src}
               alt={POLAROIDS[3].alt}
               caption={POLAROIDS[3].caption}
               rotation="rotate-[4deg]"
-              className="absolute top-[46%] right-[-5%] w-[190px] lg:w-[230px] hidden xl:block opacity-35 hover:opacity-100 hover:rotate-0 transition-all duration-500"
-              onClick={() => handleSearch(POLAROIDS[3].query)}
+              className="absolute top-[46%] right-[-5%] w-[120px] lg:w-[160px] hidden xl:block opacity-35 hover:opacity-100 hover:rotate-0 transition-all duration-500"
             />
             <PolaroidPhoto
               src={POLAROIDS[4].src}
               alt={POLAROIDS[4].alt}
               caption={POLAROIDS[4].caption}
               rotation="rotate-[3deg]"
-              className="absolute bottom-[4%] left-[6%] w-[200px] lg:w-[240px] hidden lg:block opacity-40 hover:opacity-100 hover:rotate-[-1deg] transition-all duration-500"
-              onClick={() => handleSearch(POLAROIDS[4].query)}
+              className="absolute bottom-[4%] left-[6%] w-[130px] lg:w-[170px] hidden lg:block opacity-40 hover:opacity-100 hover:rotate-[-1deg] transition-all duration-500"
             />
             <PolaroidPhoto
               src={POLAROIDS[5].src}
               alt={POLAROIDS[5].alt}
               caption={POLAROIDS[5].caption}
               rotation="rotate-[-4deg]"
-              className="absolute bottom-[6%] right-[6%] w-[200px] lg:w-[240px] hidden lg:block opacity-40 hover:opacity-100 hover:rotate-[1deg] transition-all duration-500"
-              onClick={() => handleSearch(POLAROIDS[5].query)}
+              className="absolute bottom-[6%] right-[6%] w-[130px] lg:w-[170px] hidden lg:block opacity-40 hover:opacity-100 hover:rotate-[1deg] transition-all duration-500"
             />
 
             <div className="relative z-10 text-center w-full max-w-[950px] mx-auto">
@@ -687,18 +718,18 @@ export default function HomePage() {
             <h2 className="font-display-lg text-4xl md:text-6xl font-bold text-primary mb-24 text-center tracking-tight max-w-4xl mx-auto leading-tight">
               Curated collections for the <span className="font-serif italic font-normal text-secondary">modern explorer</span>.
             </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-12 lg:gap-16">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-12 lg:gap-16 justify-items-center">
               {POLAROIDS.map((item, index) => {
                 const rotations = ["rotate-[-1.5deg]", "rotate-[2deg]", "rotate-[-1deg]", "rotate-[1.5deg]", "rotate-[-2deg]", "rotate-[1.2deg]"];
                 return (
-                  <PolaroidPhoto
-                    key={item.id}
-                    src={item.src}
-                    alt={item.alt}
-                    caption={item.caption}
-                    rotation={rotations[index % rotations.length]}
-                    onClick={() => handleSearch(item.query)}
-                  />
+                  <div key={item.id} className="w-full max-w-[280px] sm:max-w-[320px]">
+                    <PolaroidPhoto
+                      src={item.src}
+                      alt={item.alt}
+                      caption={item.caption}
+                      rotation={rotations[index % rotations.length]}
+                    />
+                  </div>
                 );
               })}
             </div>
@@ -800,7 +831,7 @@ export default function HomePage() {
           </section>
 
           {/* Footer */}
-          <footer className="w-full border-t border-outline-variant/30 bg-surface-container-lowest py-16 px-margin-mobile md:px-margin-desktop mt-12">
+          <footer className="w-full border-t border-outline-variant/30 bg-surface-container-lowest pt-16 pb-32 md:pb-16 px-margin-mobile md:px-margin-desktop mt-12">
             <div className="max-w-container-max mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
               <div 
                 onClick={() => setMode('discover')} 
