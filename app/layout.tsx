@@ -2,14 +2,17 @@ import type { Metadata } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'StayMatch AI — Albanian hospitality, matched by AI',
-  description: 'Describe how you want to travel. We find the perfect Albanian property.',
+  title: 'StayMatch Luxury Collection — Find your stay using AI',
+  description: 'Describe how you want to travel. Our AI matches you with the perfect premium stay in seconds.',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <body className="bg-black text-zinc-100 antialiased">{children}</body>
+    <html lang="en" suppressHydrationWarning>
+      <body className="bg-surface text-on-surface antialiased font-body-md min-h-screen flex flex-col relative overflow-x-hidden" suppressHydrationWarning>
+        {children}
+      </body>
     </html>
   );
 }
+

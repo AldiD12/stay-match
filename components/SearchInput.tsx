@@ -16,29 +16,35 @@ export default function SearchInput({ onSearch, isRunning }: Props) {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="flex gap-3">
-      <input
-        type="text"
-        value={value}
-        onChange={e => setValue(e.target.value)}
-        placeholder="Describe your perfect Albanian stay..."
-        disabled={isRunning}
-        className="flex-1 bg-zinc-900 border border-zinc-700 rounded-xl px-5 py-4 text-lg text-zinc-100 placeholder-zinc-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition disabled:opacity-50"
-      />
-      <button
-        type="submit"
-        disabled={isRunning || !value.trim()}
-        className="px-8 py-4 rounded-xl bg-blue-600 hover:bg-blue-500 active:bg-blue-700 text-white font-semibold text-lg transition disabled:opacity-40 disabled:cursor-not-allowed whitespace-nowrap"
-      >
-        {isRunning ? (
-          <span className="flex items-center gap-2">
-            <span className="h-4 w-4 rounded-full border-2 border-white border-t-transparent animate-spin" />
-            Searching...
-          </span>
-        ) : (
-          'Find My Stay'
-        )}
-      </button>
+    <form onSubmit={handleSubmit} className="w-full max-w-4xl relative mx-auto">
+      <div className="relative flex items-center w-full h-20 rounded-full bg-surface-container-lowest/80 backdrop-blur-md border border-outline-variant/30 shadow-[0_10px_40px_rgba(26,26,26,0.04)] focus-within:ring-2 focus-within:ring-primary/20 focus-within:border-transparent transition-all overflow-hidden pl-6 pr-2">
+        <span 
+          className="material-symbols-outlined text-on-surface-variant mr-4 text-[28px]" 
+          style={{ fontVariationSettings: '"FILL" 0' }}
+        >
+          search
+        </span>
+        <input
+          type="text"
+          value={value}
+          onChange={e => setValue(e.target.value)}
+          placeholder="I am a digital nomad, I want to go to Albania, I need fast wifi and quietness..."
+          disabled={isRunning}
+          className="w-full h-full bg-transparent border-none focus:ring-0 font-body-lg text-body-lg text-on-surface placeholder:text-on-surface-variant/40 outline-none"
+        />
+        <button
+          type="submit"
+          disabled={isRunning || !value.trim()}
+          className="bg-primary text-on-primary rounded-full p-4 hover:bg-on-primary-container transition-all ml-2 flex items-center justify-center h-16 w-16 shrink-0 shadow-lg disabled:opacity-40 disabled:hover:bg-primary transition-transform duration-200 active:scale-95"
+        >
+          {isRunning ? (
+            <span className="h-5 w-5 rounded-full border-2 border-on-primary border-t-transparent animate-spin" />
+          ) : (
+            <span className="material-symbols-outlined text-[24px]">arrow_forward</span>
+          )}
+        </button>
+      </div>
     </form>
   );
 }
+

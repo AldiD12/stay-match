@@ -1,31 +1,206 @@
 'use client';
 
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useRef, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import SearchInput from '@/components/SearchInput';
 import DemoQueryButtons from '@/components/DemoQueryButtons';
 import ExecutionVisualizer from '@/components/ExecutionVisualizer';
 import PropertyCard from '@/components/PropertyCard';
 import type { AgentEvent, RankedProperty } from '@/lib/types';
 
+interface ChatMessage {
+  id: string;
+  sender: 'user' | 'assistant';
+  text: string;
+  timestamp: string;
+  properties?: RankedProperty[];
+  events?: AgentEvent[];
+  isRunning?: boolean;
+  isError?: boolean;
+}
+
+function getAssistantResponseText(query: string, propertiesCount: number): string {
+  if (propertiesCount === 0) {
+    return `I searched thoroughly for properties matching your request, but couldn't find any direct matches. Could you try refining your criteria (e.g. adjusting locations, budget, or amenities)?`;
+  }
+  return `Perfect. I've curated a selection of ${propertiesCount} premium properties ideal for your request, combining inspiring views with reliable infrastructure. Take a look at these matches.`;
+}
+
+interface PolaroidData {
+  id: string;
+  src: string;
+  alt: string;
+  caption: string;
+  query: string;
+}
+
+const POLAROIDS: PolaroidData[] = [
+  {
+    id: 'beach-lounge',
+    src: 'https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=600&q=80',
+    alt: 'Coastal Serenity Living Room',
+    caption: 'Coastal Serenity',
+    query: 'luxury beachfront villa in Vlorë or Sarandë with ocean views, fast fiber wifi, and a spacious terrace',
+  },
+  {
+    id: 'winter-cabin',
+    src: 'https://images.unsplash.com/photo-1510798831971-661eb04b3739?auto=format&fit=crop&w=600&q=80',
+    alt: 'Cozy Winter Cabin Fireplace',
+    caption: 'Alpine Warmth',
+    query: 'cozy wooden cabin in Korçë or Voskopojë with a fireplace, alpine forest views, and comfortable workstations',
+  },
+  {
+    id: 'bamboo-workspace',
+    src: 'https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=600&q=80',
+    alt: 'Bamboo Jungle Workspace Hammock',
+    caption: 'Jungle Sanctuary',
+    query: 'eco-friendly bamboo villa or retreat in the jungle with hammock, high-speed internet, and a peaceful work environment',
+  },
+  {
+    id: 'vintage-bedroom',
+    src: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=600&q=80',
+    alt: 'Vintage Bedroom copper clawfoot tub',
+    caption: 'Boutique Suite',
+    query: 'historic boutique stay with vintage design, luxury clawfoot copper bathtub, elegant interior, and central location',
+  },
+  {
+    id: 'courtyard-coffee',
+    src: 'https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=600&q=80',
+    alt: 'Courtyard Garden Steaming Coffee Cup',
+    caption: 'Morning Sanctuary',
+    query: 'charming stone villa with a lush private courtyard garden, outdoor seating, streaming sunlight, and cozy work desks',
+  },
+  {
+    id: 'amalfi-balcony',
+    src: 'https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=600&q=80',
+    alt: 'Mediterranean Balcony breakfast set bougainvillea',
+    caption: 'Mediterranean Terrace',
+    query: 'spectacular Riviera apartment with a panoramic sea-view balcony, bougainvillea flowers, outdoor dining table, and quiet workspace',
+  },
+];
+
+interface PolaroidPhotoProps {
+  src: string;
+  alt: string;
+  caption: string;
+  className?: string;
+  rotation?: string;
+  onClick?: () => void;
+}
+
+function PolaroidPhoto({ src, alt, caption, className = '', rotation = 'rotate-0', onClick }: PolaroidPhotoProps) {
+  return (
+    <div
+      onClick={onClick}
+      className={`group cursor-pointer bg-white border border-[#e9e8e5] p-3 pb-7 shadow-[0_8px_30px_rgba(26,26,26,0.04)] hover:shadow-[0_20px_40px_rgba(26,26,26,0.08)] hover:-translate-y-2 hover:scale-[1.03] transition-all duration-500 ease-out hover:z-30 select-none ${rotation} ${className}`}
+    >
+      <div className="relative w-full aspect-square overflow-hidden bg-neutral-50">
+        <img
+          src={src}
+          alt={alt}
+          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+        />
+      </div>
+      <div className="mt-3 text-center">
+        <span className="font-serif italic font-normal text-secondary text-sm select-none block">
+          {caption}
+        </span>
+      </div>
+    </div>
+  );
+}
+
 export default function HomePage() {
+  const [mode, setMode] = useState<'discover' | 'concierge'>('discover');
+  const [messages, setMessages] = useState<ChatMessage[]>([]);
+  const [selectedMessageId, setSelectedMessageId] = useState<string | null>(null);
+  const [conciergeQuery, setConciergeQuery] = useState('');
+  const [bottomQuery, setBottomQuery] = useState('');
+
+  // Global legacy states for Discover mode Curation Workspace fallback
   const [events, setEvents] = useState<AgentEvent[]>([]);
   const [properties, setProperties] = useState<RankedProperty[]>([]);
   const [isRunning, setIsRunning] = useState(false);
 
+  const workspaceRef = useRef<HTMLDivElement>(null);
+  const chatEndRef = useRef<HTMLDivElement>(null);
+
+  // Initialize welcome message on mount to prevent SSR locale/time hydration mismatch
+  useEffect(() => {
+    setMessages([
+      {
+        id: 'welcome',
+        sender: 'assistant',
+        text: "Welcome to StayMatch Luxury Concierge. I can help you find premium properties tailored to your exact work and lifestyle requirements in Albania. How can I assist you today?",
+        timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+      }
+    ]);
+  }, []);
+
+  // Auto scroll to trace workspace when search starts in Discover mode
+  useEffect(() => {
+    if (mode === 'discover' && isRunning && workspaceRef.current) {
+      setTimeout(() => {
+        workspaceRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 300);
+    }
+  }, [isRunning, mode]);
+
+  // Auto scroll to bottom of chat when new messages arrive or isRunning triggers
+  useEffect(() => {
+    if (mode === 'concierge') {
+      chatEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [messages, isRunning, mode]);
+
   const handleSearch = useCallback(async (query: string) => {
+    // 1. Strict Input Sanitization & 500-Character Cap (Bulletproof Safeguard)
+    const cleanedQuery = query.trim().slice(0, 500);
+    if (!cleanedQuery) return;
+
+    setMode('concierge');
+    setIsRunning(true);
     setEvents([]);
     setProperties([]);
-    setIsRunning(true);
 
+    const timestamp = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+    const userMsgId = 'user-' + Date.now();
+    const assistantMsgId = 'assistant-' + Date.now();
+
+    const userMessage: ChatMessage = {
+      id: userMsgId,
+      sender: 'user',
+      text: cleanedQuery,
+      timestamp,
+    };
+
+    const assistantMessage: ChatMessage = {
+      id: assistantMsgId,
+      sender: 'assistant',
+      text: '',
+      timestamp,
+      properties: [],
+      events: [],
+      isRunning: true,
+    };
+
+    setMessages(prev => [...prev, userMessage, assistantMessage]);
+    setSelectedMessageId(assistantMsgId);
+
+    let currentEvents: AgentEvent[] = [];
+    let currentProperties: RankedProperty[] = [];
+
+    // 2. Defensive SSE Stream Reading
     try {
       const res = await fetch('/api/agent', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ query }),
+        body: JSON.stringify({ query: cleanedQuery }),
       });
 
       if (!res.ok || !res.body) {
-        throw new Error(`Server error: ${res.status}`);
+        throw new Error(`Server returned status code: ${res.status}`);
       }
 
       const reader = res.body.getReader();
@@ -49,71 +224,648 @@ export default function HomePage() {
           try {
             event = JSON.parse(raw) as AgentEvent;
           } catch {
-            continue;
+            continue; // Skip malformed JSON entries defensively
           }
 
           if (event.type === 'final_ranking') {
+            currentProperties = event.properties;
             setProperties(event.properties);
-            setEvents(prev => [...prev, event]);
+            currentEvents.push(event);
           } else if (event.type === 'done') {
-            setIsRunning(false);
+            // Handled on loop completion
           } else {
-            setEvents(prev => [...prev, event]);
+            currentEvents.push(event);
           }
+
+          setEvents([...currentEvents]);
+
+          // Dynamically stream events directly to the message thread bubble
+          setMessages(prev =>
+            prev.map(msg =>
+              msg.id === assistantMsgId
+                ? {
+                    ...msg,
+                    events: [...currentEvents],
+                    properties: [...currentProperties],
+                  }
+                : msg
+            )
+          );
         }
       }
+
+      const finalResponseText = getAssistantResponseText(cleanedQuery, currentProperties.length);
+      setMessages(prev =>
+        prev.map(msg =>
+          msg.id === assistantMsgId
+            ? {
+                ...msg,
+                text: finalResponseText,
+                isRunning: false,
+              }
+            : msg
+        )
+      );
+      setIsRunning(false);
+
     } catch (err) {
-      setEvents(prev => [...prev, { type: 'error', message: String(err) }]);
+      const errorMessage = String(err);
+      setMessages(prev =>
+        prev.map(msg =>
+          msg.id === assistantMsgId
+            ? {
+                ...msg,
+                text: `I encountered an unexpected issue while searching: ${errorMessage}. Please try refining your criteria or search again.`,
+                isError: true,
+                isRunning: false,
+              }
+            : msg
+        )
+      );
       setIsRunning(false);
     }
   }, []);
 
+  const handleConciergeSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (conciergeQuery.trim() && !isRunning) {
+      handleSearch(conciergeQuery.trim());
+      setConciergeQuery('');
+    }
+  };
+
+  const handleBottomSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (bottomQuery.trim() && !isRunning) {
+      handleSearch(bottomQuery.trim());
+      setBottomQuery('');
+    }
+  };
+
+  const hasWorkspace = isRunning || properties.length > 0;
+
+  // Retrieve properties for currently selected message or default to latest global properties
+  const selectedMsg = messages.find(m => m.id === selectedMessageId);
+  const selectedMessageProperties = selectedMsg?.properties ?? properties;
+
+  // Track expanded trace card IDs in chat thread to create a rich detail inspector
+  const [expandedTraceId, setExpandedTraceId] = useState<string | null>(null);
+
+  // Auto-expand active assistant search trace
+  useEffect(() => {
+    if (isRunning && selectedMessageId) {
+      setExpandedTraceId(selectedMessageId);
+    }
+  }, [isRunning, selectedMessageId]);
+
   return (
-    <div className="min-h-screen bg-black p-8 max-w-screen-xl mx-auto">
-      {/* Header */}
-      <header className="mb-10">
-        <div className="flex items-baseline gap-3 mb-2">
-          <h1 className="text-4xl font-bold text-zinc-100">StayMatch</h1>
-          <span className="text-blue-500 font-mono text-sm">AI</span>
+    <>
+      {/* Top NavBar */}
+      <nav className="fixed bg-surface/90 backdrop-blur-md top-0 border-b border-outline-variant/30 w-full h-20 px-margin-mobile md:px-margin-desktop z-50 transition-all duration-200">
+        <div className="flex justify-between items-center w-full h-full max-w-container-max mx-auto">
+          <div 
+            onClick={() => setMode('discover')} 
+            className="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed tracking-tight cursor-pointer select-none"
+          >
+            StayMatch
+          </div>
+          <div className="flex items-center gap-8 h-full">
+            {/* Discover */}
+            <button 
+              onClick={() => setMode('discover')}
+              className={`font-label-lg text-label-lg transition-colors duration-200 scale-95 active:transition-transform h-full flex items-center pt-1 px-1 cursor-pointer border-b-2 ${
+                mode === 'discover' 
+                  ? 'text-primary font-bold border-primary' 
+                  : 'text-on-surface-variant/70 border-transparent hover:text-primary'
+              }`}
+            >
+              Discover
+            </button>
+            {/* Collections (Inactive) */}
+            <button className="font-label-lg text-label-lg text-on-surface-variant/60 hover:text-primary transition-colors duration-200 scale-95 cursor-default h-full flex items-center pt-1 px-1">
+              Collections
+            </button>
+            {/* Concierge */}
+            <button 
+              onClick={() => setMode('concierge')}
+              className={`font-label-lg text-label-lg transition-colors duration-200 scale-95 active:transition-transform h-full flex items-center pt-1 px-1 cursor-pointer border-b-2 ${
+                mode === 'concierge' 
+                  ? 'text-primary font-bold border-primary' 
+                  : 'text-on-surface-variant/70 border-transparent hover:text-primary'
+              }`}
+            >
+              Concierge
+            </button>
+          </div>
+          <button className="font-label-lg text-label-lg text-primary scale-95 active:transition-transform hover:opacity-75 transition-opacity font-bold">
+            Sign In
+          </button>
         </div>
-        <p className="text-zinc-500 text-lg">
-          Describe your perfect Albanian stay. The agent finds it.
-        </p>
-      </header>
+      </nav>
 
-      {/* Search */}
-      <div className="space-y-4 mb-10">
-        <SearchInput onSearch={handleSearch} isRunning={isRunning} />
-        <DemoQueryButtons onSelect={handleSearch} isRunning={isRunning} />
-      </div>
+      {/* Main Content Area */}
+      {mode === 'concierge' ? (
+        <div className="flex-grow flex flex-col md:flex-row w-full max-w-container-max mx-auto h-[calc(100vh-80px)] pt-20 overflow-hidden">
+          
+          {/* Left Column: Chat Thread (35%) */}
+          <aside className="w-full md:w-[35%] flex flex-col border-r border-outline-variant/50 bg-surface-bright h-full overflow-hidden">
+            {/* Chat Header (Mobile Only) */}
+            <div className="md:hidden p-4 border-b border-outline-variant/50 flex items-center justify-between">
+              <h1 className="font-headline-md text-headline-md text-on-surface">Concierge</h1>
+              <button className="text-on-surface-variant/70">
+                <span className="material-symbols-outlined text-[24px]">more_horiz</span>
+              </button>
+            </div>
 
-      {/* Main content grid */}
-      <div className="grid grid-cols-2 gap-8 items-start">
-        {/* Left: Results */}
-        <div>
-          {properties.length > 0 && (
-            <div className="space-y-5">
-              <h2 className="text-sm font-mono text-zinc-500 uppercase tracking-wider">
-                {properties.length} Match{properties.length !== 1 ? 'es' : ''} Found
-              </h2>
-              {properties.map((p, i) => (
-                <PropertyCard key={p.property.id} property={p} index={i} />
+            {/* Chat Messages */}
+            <div className="flex-grow overflow-y-auto p-6 space-y-6 custom-scrollbar pb-24 md:pb-6">
+              {/* Today Badge */}
+              <div className="text-center my-2">
+                <span className="font-label-sm text-label-sm text-on-surface-variant/75 uppercase tracking-wider bg-surface-container-low px-4 py-1.5 rounded-full border border-outline-variant/20">
+                  Today
+                </span>
+              </div>
+
+              {/* Message List */}
+              {messages.map((msg) => (
+                <div key={msg.id} className="space-y-3">
+                  {msg.sender === 'user' ? (
+                    /* User Message Capsule */
+                    <div className="flex justify-end">
+                      <div className="bg-primary text-on-primary rounded-3xl rounded-tr-none px-6 py-4 max-w-[85%] font-body-md text-body-md shadow-sm leading-relaxed text-balance">
+                        {msg.text}
+                      </div>
+                    </div>
+                  ) : (
+                    /* Assistant Message Capsule */
+                    <div 
+                      className={`flex flex-col gap-2 transition-all duration-300 rounded-[2rem] p-1.5 ${
+                        selectedMessageId === msg.id 
+                          ? 'bg-surface-container-low/40 border border-outline-variant/15' 
+                          : 'border border-transparent'
+                      }`}
+                    >
+                      <div className="flex justify-start items-start gap-2.5">
+                        {/* Avatar */}
+                        <div className="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center shrink-0 shadow-sm border border-outline-variant/10">
+                          <span 
+                            className="material-symbols-outlined text-[16px] text-on-secondary-container" 
+                            style={{ fontVariationSettings: '"FILL" 1' }}
+                          >
+                            auto_awesome
+                          </span>
+                        </div>
+                        {/* Content bubble */}
+                        <div 
+                          className={`text-on-surface border rounded-3xl rounded-tl-none px-6 py-4 max-w-[85%] font-body-md text-body-md shadow-sm leading-relaxed ${
+                            msg.isError 
+                              ? 'border-error-container/30 bg-error-container/20 text-error' 
+                              : 'bg-surface-container-low border-outline-variant/30'
+                          }`}
+                        >
+                          {msg.isRunning && !msg.text ? (
+                            /* Typing Indicator Bouncing Dots */
+                            <div className="flex items-center gap-1.5 py-1">
+                              <div className="w-2 h-2 bg-on-surface-variant rounded-full animate-bounce"></div>
+                              <div className="w-2 h-2 bg-on-surface-variant rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
+                              <div className="w-2 h-2 bg-on-surface-variant rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+                            </div>
+                          ) : (
+                            msg.text
+                          )}
+                        </div>
+                      </div>
+
+                      {/* Interactive In-Bubble Execution Trace Logs */}
+                      {msg.events && msg.events.length > 0 && (
+                        <div className="pl-10.5 pr-2.5 w-full">
+                          <div className="border-t border-outline-variant/20 pt-3 mt-1">
+                            <button 
+                              onClick={() => setExpandedTraceId(expandedTraceId === msg.id ? null : msg.id)}
+                              className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-secondary hover:text-primary transition-colors focus:outline-none"
+                            >
+                              <span className="material-symbols-outlined text-[16px]">
+                                {expandedTraceId === msg.id ? 'keyboard_arrow_up' : 'insights'}
+                              </span>
+                              <span>{expandedTraceId === msg.id ? 'Hide Curation Logs' : 'View Curation Logs'}</span>
+                              {msg.isRunning && (
+                                <span className="h-1.5 w-1.5 rounded-full bg-secondary animate-pulse shrink-0" />
+                              )}
+                            </button>
+                            
+                            <AnimatePresence>
+                              {expandedTraceId === msg.id && (
+                                <motion.div 
+                                  initial={{ opacity: 0, height: 0 }}
+                                  animate={{ opacity: 1, height: 'auto' }}
+                                  exit={{ opacity: 0, height: 0 }}
+                                  className="mt-3 bg-surface-container-lowest border border-outline-variant/30 rounded-2xl p-4 shadow-inner max-h-[220px] overflow-y-auto custom-scrollbar"
+                                >
+                                  <ExecutionVisualizer events={msg.events} isRunning={msg.isRunning || false} />
+                                </motion.div>
+                              )}
+                            </AnimatePresence>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  )}
+                </div>
               ))}
+              <div ref={chatEndRef} />
             </div>
-          )}
 
-          {!isRunning && properties.length === 0 && (
-            <div className="flex items-center justify-center h-64 text-zinc-700 text-sm">
-              Your matches will appear here.
+            {/* Chat Input Area */}
+            <div className="p-6 bg-surface-bright pb-safe border-t border-outline-variant/30 z-10 shadow-[0_-4px_24px_rgba(26,26,26,0.02)]">
+              <form onSubmit={handleConciergeSubmit} className="relative w-full max-w-md mx-auto">
+                <input 
+                  type="text"
+                  value={conciergeQuery}
+                  onChange={(e) => setConciergeQuery(e.target.value)}
+                  disabled={isRunning}
+                  placeholder={isRunning ? "AI Concierge is processing..." : "Refine your search or ask something else..."}
+                  className="w-full bg-surface-container-lowest border border-secondary-container rounded-full py-4 pl-6 pr-14 font-body-md text-body-md text-on-surface focus:outline-none focus:ring-1 focus:ring-primary shadow-[0_4px_20px_rgba(26,26,26,0.04)] placeholder-on-surface-variant/40 transition-shadow disabled:opacity-50 disabled:cursor-not-allowed"
+                />
+                <button 
+                  type="submit"
+                  disabled={isRunning || !conciergeQuery.trim()}
+                  className="absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-primary text-on-primary rounded-full hover:bg-primary-container transition-colors flex items-center justify-center focus:outline-none disabled:opacity-30 disabled:hover:bg-primary"
+                >
+                  {isRunning ? (
+                    <span className="h-4 w-4 rounded-full border-2 border-on-primary border-t-transparent animate-spin" />
+                  ) : (
+                    <span className="material-symbols-outlined text-[20px]">arrow_upward</span>
+                  )}
+                </button>
+              </form>
             </div>
-          )}
-        </div>
+          </aside>
 
-        {/* Right: Live Visualizer */}
-        <div className="sticky top-8 bg-zinc-950 border border-zinc-800 rounded-2xl p-6 h-[70vh]">
-          <ExecutionVisualizer events={events} isRunning={isRunning} />
+          {/* Right Column: Property Grid (65%) */}
+          <main className="w-full md:w-[65%] p-6 md:p-10 overflow-y-auto bg-surface-container-lowest h-full custom-scrollbar pb-32 md:pb-10">
+            <header className="mb-8 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+              <div>
+                <h2 className="font-headline-lg text-headline-lg text-on-surface">Curated for You</h2>
+                <p className="font-body-md text-body-md text-on-surface-variant mt-1 leading-relaxed">
+                  {selectedMessageProperties.length > 0 
+                    ? `Based on active curated matches in Albania`
+                    : `State your nomad parameters to search luxury stays`}
+                </p>
+              </div>
+              <button className="flex items-center gap-2 font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors border border-outline-variant/50 rounded-full px-5 py-2.5 self-start sm:self-auto uppercase tracking-wider bg-surface-bright shadow-sm hover:shadow-md">
+                <span className="material-symbols-outlined text-[16px]">tune</span> Filters
+              </button>
+            </header>
+
+            {selectedMessageProperties.length > 0 ? (
+              <div className="grid grid-cols-1 xl:grid-cols-2 gap-gutter">
+                {selectedMessageProperties.map((p, i) => (
+                  <PropertyCard key={p.property.id} property={p} index={i} />
+                ))}
+              </div>
+            ) : (
+              <div className="flex flex-col items-center justify-center h-[55vh] text-center border border-dashed border-outline-variant/40 rounded-[2.5rem] bg-surface-container-lowest/30 p-8 shadow-inner">
+                <span className="material-symbols-outlined text-[48px] text-on-surface-variant/20 mb-4 animate-bounce">page_info</span>
+                <p className="text-on-surface-variant font-serif italic text-base max-w-xs leading-relaxed">
+                  {isRunning 
+                    ? "Evaluating and scoring stays matching your lifestyle..." 
+                    : "No matches loaded. Send a message to stream curated stays here."}
+                </p>
+              </div>
+            )}
+          </main>
         </div>
-      </div>
-    </div>
+      ) : (
+        /* Discover Mode (Landing Page View) */
+        <main className="flex-grow flex flex-col pt-20">
+          
+          {/* Hero Section */}
+          <section 
+            className="relative w-full min-h-[90vh] flex flex-col justify-center items-center px-margin-mobile md:px-margin-desktop py-stack-lg z-10"
+            style={{ background: 'radial-gradient(circle at center 60%, rgba(241, 223, 209, 0.4) 0%, rgba(250, 249, 246, 1) 60%)', overflow: 'hidden' }}
+          >
+            {/* Floating Ambient Watermarks */}
+            <PolaroidPhoto
+              src={POLAROIDS[0].src}
+              alt={POLAROIDS[0].alt}
+              caption={POLAROIDS[0].caption}
+              rotation="rotate-[-6deg]"
+              className="absolute top-[6%] left-[-4%] w-[200px] lg:w-[240px] hidden lg:block opacity-40 hover:opacity-100 hover:rotate-[-2deg] transition-all duration-500"
+              onClick={() => handleSearch(POLAROIDS[0].query)}
+            />
+            <PolaroidPhoto
+              src={POLAROIDS[1].src}
+              alt={POLAROIDS[1].alt}
+              caption={POLAROIDS[1].caption}
+              rotation="rotate-[5deg]"
+              className="absolute top-[8%] right-[-4%] w-[210px] lg:w-[250px] hidden lg:block opacity-40 hover:opacity-100 hover:rotate-[2deg] transition-all duration-500"
+              onClick={() => handleSearch(POLAROIDS[1].query)}
+            />
+            <PolaroidPhoto
+              src={POLAROIDS[2].src}
+              alt={POLAROIDS[2].alt}
+              caption={POLAROIDS[2].caption}
+              rotation="rotate-[-3deg]"
+              className="absolute top-[44%] left-[-5%] w-[190px] lg:w-[230px] hidden xl:block opacity-35 hover:opacity-100 hover:rotate-0 transition-all duration-500"
+              onClick={() => handleSearch(POLAROIDS[2].query)}
+            />
+            <PolaroidPhoto
+              src={POLAROIDS[3].src}
+              alt={POLAROIDS[3].alt}
+              caption={POLAROIDS[3].caption}
+              rotation="rotate-[4deg]"
+              className="absolute top-[46%] right-[-5%] w-[190px] lg:w-[230px] hidden xl:block opacity-35 hover:opacity-100 hover:rotate-0 transition-all duration-500"
+              onClick={() => handleSearch(POLAROIDS[3].query)}
+            />
+            <PolaroidPhoto
+              src={POLAROIDS[4].src}
+              alt={POLAROIDS[4].alt}
+              caption={POLAROIDS[4].caption}
+              rotation="rotate-[3deg]"
+              className="absolute bottom-[4%] left-[6%] w-[200px] lg:w-[240px] hidden lg:block opacity-40 hover:opacity-100 hover:rotate-[-1deg] transition-all duration-500"
+              onClick={() => handleSearch(POLAROIDS[4].query)}
+            />
+            <PolaroidPhoto
+              src={POLAROIDS[5].src}
+              alt={POLAROIDS[5].alt}
+              caption={POLAROIDS[5].caption}
+              rotation="rotate-[-4deg]"
+              className="absolute bottom-[6%] right-[6%] w-[200px] lg:w-[240px] hidden lg:block opacity-40 hover:opacity-100 hover:rotate-[1deg] transition-all duration-500"
+              onClick={() => handleSearch(POLAROIDS[5].query)}
+            />
+
+            <div className="relative z-10 text-center w-full max-w-[950px] mx-auto">
+              <motion.h1 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                className="font-display-lg text-display-lg md:text-[72px] md:leading-[82px] font-bold text-primary mb-10 tracking-tight text-balance max-w-4xl mx-auto"
+              >
+                Find your stay using <span className="font-serif italic font-normal text-secondary">natural language</span>
+              </motion.h1>
+              
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+                className="mb-8"
+              >
+                <SearchInput onSearch={handleSearch} isRunning={isRunning} />
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+              >
+                <DemoQueryButtons onSelect={handleSearch} isRunning={isRunning} />
+              </motion.div>
+            </div>
+          </section>
+
+          {/* Legacy Curation Workspace under Hero (Fallback check) */}
+          <AnimatePresence>
+            {hasWorkspace && (
+              <motion.section 
+                ref={workspaceRef}
+                id="curation-workspace"
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: 'auto' }}
+                exit={{ opacity: 0, height: 0 }}
+                transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                className="py-24 px-margin-mobile md:px-margin-desktop bg-surface-container-low/30 border-y border-outline-variant/20 overflow-hidden"
+              >
+                <div className="max-w-container-max mx-auto w-full">
+                  <div className="text-center mb-16">
+                    <span className="font-label-sm text-label-sm text-secondary uppercase tracking-widest block mb-3">AI Engine Workspace</span>
+                    <h2 className="font-display-lg text-3xl md:text-5xl font-bold text-primary tracking-tight">
+                      Your custom stay short-list, <span className="font-serif italic font-normal text-secondary">curated</span> in real-time
+                    </h2>
+                  </div>
+
+                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+                    
+                    {/* Left Column: AI Live Trace */}
+                    <div className="lg:col-span-5 bg-surface-container-lowest border border-outline-variant/35 rounded-[2rem] p-6 h-[72vh] flex flex-col shadow-[0_8px_32px_rgba(26,26,26,0.03)] overflow-hidden">
+                      <ExecutionVisualizer events={events} isRunning={isRunning} />
+                    </div>
+
+                    {/* Right Column: Curated Property Results */}
+                    <div className="lg:col-span-7 space-y-8">
+                      {properties.length > 0 ? (
+                        <div className="space-y-6">
+                          <div className="flex items-center justify-between pb-3 border-b border-outline-variant/20">
+                            <span className="font-label-sm text-xs font-bold text-secondary uppercase tracking-widest">
+                              Verified Matches ({properties.length})
+                            </span>
+                            <span className="text-xs text-on-surface-variant/60 font-semibold uppercase tracking-wider">Sorted by compatibility</span>
+                          </div>
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            {properties.map((p, i) => (
+                              <PropertyCard key={p.property.id} property={p} index={i} />
+                            ))}
+                          </div>
+                        </div>
+                      ) : (
+                        <div className="flex flex-col items-center justify-center h-[50vh] text-center border border-dashed border-outline-variant/50 rounded-[2.5rem] bg-surface-container-lowest/30 p-8">
+                          <span className="material-symbols-outlined text-[48px] text-on-surface-variant/30 mb-4 animate-bounce">page_info</span>
+                          <p className="text-on-surface-variant font-serif italic text-base max-w-xs leading-relaxed">
+                            Evaluating and scoring stays matching your lifestyle...
+                          </p>
+                        </div>
+                      )}
+                    </div>
+
+                  </div>
+                </div>
+              </motion.section>
+            )}
+          </AnimatePresence>
+
+          {/* Curated Collections Section */}
+          <section className="py-32 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto w-full">
+            <h2 className="font-display-lg text-4xl md:text-6xl font-bold text-primary mb-24 text-center tracking-tight max-w-4xl mx-auto leading-tight">
+              Curated collections for the <span className="font-serif italic font-normal text-secondary">modern explorer</span>.
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-12 lg:gap-16">
+              {POLAROIDS.map((item, index) => {
+                const rotations = ["rotate-[-1.5deg]", "rotate-[2deg]", "rotate-[-1deg]", "rotate-[1.5deg]", "rotate-[-2deg]", "rotate-[1.2deg]"];
+                return (
+                  <PolaroidPhoto
+                    key={item.id}
+                    src={item.src}
+                    alt={item.alt}
+                    caption={item.caption}
+                    rotation={rotations[index % rotations.length]}
+                    onClick={() => handleSearch(item.query)}
+                  />
+                );
+              })}
+            </div>
+          </section>
+
+          {/* How It Works Section */}
+          <section className="py-32 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto w-full border-t border-outline-variant/10">
+            <h2 className="font-display-lg text-4xl md:text-6xl font-bold text-primary mb-24 text-center tracking-tight leading-tight">
+              Your stay, <span className="font-serif italic font-normal text-secondary">curated</span> in seconds.
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-12">
+              <div className="flex flex-col items-center text-center group">
+                <div className="text-8xl font-serif italic text-secondary/20 mb-6 group-hover:text-secondary transition-colors duration-500 font-bold">01</div>
+                <h3 className="font-headline-md text-2xl font-bold mb-4 tracking-tight">Describe Your Vibe</h3>
+                <p className="text-on-surface-variant/80 font-body-lg leading-relaxed max-w-sm">
+                  Type naturally exactly what you want. Fast fiber wifi, quiet nights, stone castle vaults — we handle it all.
+                </p>
+              </div>
+              <div className="flex flex-col items-center text-center group md:mt-12">
+                <div className="text-8xl font-serif italic text-secondary/20 mb-6 group-hover:text-secondary transition-colors duration-500 font-bold">02</div>
+                <h3 className="font-headline-md text-2xl font-bold mb-4 tracking-tight">AI Deep-Match</h3>
+                <p className="text-on-surface-variant/80 font-body-lg leading-relaxed max-w-sm">
+                  Our resident AI cross-references property listings, verifying actual connection speed tests and noise parameters.
+                </p>
+              </div>
+              <div className="flex flex-col items-center text-center group md:mt-24">
+                <div className="text-8xl font-serif italic text-secondary/20 mb-6 group-hover:text-secondary transition-colors duration-500 font-bold">03</div>
+                <h3 className="font-headline-md text-2xl font-bold mb-4 tracking-tight">Book Instantly</h3>
+                <p className="text-on-surface-variant/80 font-body-lg leading-relaxed max-w-sm">
+                  Receive a highly accurate premium shortlist matched specifically to you, ready to compare and secure.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          {/* Features Grid Section */}
+          <section className="py-32 px-margin-mobile md:px-margin-desktop bg-surface-container-lowest border-y border-outline-variant/10 relative">
+            <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-[0.015] pointer-events-none"></div>
+            <div className="max-w-container-max mx-auto w-full relative z-10">
+              <h2 className="font-display-lg text-4xl md:text-5xl font-bold text-primary mb-20 text-center tracking-tight">
+                Built for how you live and work
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <div className="bg-surface rounded-[2.2rem] p-12 flex flex-col items-center text-center shadow-[0_12px_40px_rgba(26,26,26,0.02)] border border-outline-variant/30 relative overflow-hidden group hover:-translate-y-1 transition-transform duration-300">
+                  <span className="material-symbols-outlined text-[48px] text-primary mb-8 opacity-80 group-hover:opacity-100 transition-opacity">wifi</span>
+                  <h3 className="font-headline-md text-2xl font-bold mb-4">Verified Speed</h3>
+                  <p className="text-on-surface-variant font-body-md leading-relaxed">
+                    250+ Mbps connection tests guaranteed for seamless, reliable streaming.
+                  </p>
+                </div>
+                <div className="bg-surface rounded-[2.2rem] p-12 flex flex-col items-center text-center shadow-[0_12px_40px_rgba(26,26,26,0.02)] border border-outline-variant/30 relative overflow-hidden group hover:-translate-y-1 transition-transform duration-300">
+                  <span className="material-symbols-outlined text-[48px] text-primary mb-8 opacity-80 group-hover:opacity-100 transition-opacity">volume_off</span>
+                  <h3 className="font-headline-md text-2xl font-bold mb-4">Quiet Zone Assurance</h3>
+                  <p className="text-on-surface-variant font-body-md leading-relaxed">
+                    Insulated quiet hours and quiet zones after 9 PM to foster restorative sleep.
+                  </p>
+                </div>
+                <div className="bg-surface rounded-[2.2rem] p-12 flex flex-col items-center text-center shadow-[0_12px_40px_rgba(26,26,26,0.02)] border border-outline-variant/30 relative overflow-hidden group hover:-translate-y-1 transition-transform duration-300">
+                  <span className="material-symbols-outlined text-[48px] text-primary mb-8 opacity-80 group-hover:opacity-100 transition-opacity">desk</span>
+                  <h3 className="font-headline-md text-2xl font-bold mb-4">Ergonomic Workspaces</h3>
+                  <p className="text-on-surface-variant font-body-md leading-relaxed">
+                    Dedicated high-quality desks and proper seating in every curated unit.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Final CTA Banner */}
+          <section className="py-24 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto w-full">
+            <div className="bg-primary rounded-[3rem] p-16 md:p-28 flex flex-col items-center text-center shadow-2xl relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-96 h-96 bg-white/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3 pointer-events-none"></div>
+              <div className="absolute bottom-0 left-0 w-96 h-96 bg-secondary-container/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/3 pointer-events-none"></div>
+              
+              <h2 className="font-display-lg text-4xl md:text-6xl font-bold text-white mb-16 tracking-tight relative z-10 max-w-2xl mx-auto leading-tight">
+                Ready to find your match?
+              </h2>
+              
+              <div className="w-full max-w-3xl relative z-10">
+                <form onSubmit={handleBottomSubmit} className="relative flex items-center w-full h-20 rounded-full bg-white border border-transparent shadow-2xl focus-within:ring-4 focus-within:ring-white/20 transition-all overflow-hidden pl-8 pr-2">
+                  <span className="material-symbols-outlined text-on-surface-variant mr-4 text-[28px]">search</span>
+                  <input 
+                    type="text" 
+                    value={bottomQuery}
+                    onChange={e => setBottomQuery(e.target.value)}
+                    placeholder="Where do you want to stay in Albania?"
+                    className="w-full h-full bg-transparent border-none focus:ring-0 font-body-lg text-body-lg text-primary placeholder:text-on-surface-variant/40 outline-none"
+                  />
+                  <button 
+                    type="submit"
+                    disabled={isRunning || !bottomQuery.trim()}
+                    className="bg-primary text-white rounded-full p-4 hover:bg-zinc-800 transition-colors ml-2 flex items-center justify-center h-16 w-16 shrink-0 shadow-md disabled:opacity-40"
+                  >
+                    <span className="material-symbols-outlined text-[24px]">arrow_forward</span>
+                  </button>
+                </form>
+              </div>
+            </div>
+          </section>
+
+          {/* Footer */}
+          <footer className="w-full border-t border-outline-variant/30 bg-surface-container-lowest py-16 px-margin-mobile md:px-margin-desktop mt-12">
+            <div className="max-w-container-max mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+              <div 
+                onClick={() => setMode('discover')} 
+                className="font-headline-md text-headline-md font-bold text-primary tracking-tight cursor-pointer"
+              >
+                StayMatch
+              </div>
+              <div className="flex space-x-12">
+                <button className="font-label-lg text-on-surface-variant/80 hover:text-primary transition-colors font-bold uppercase tracking-wider text-xs cursor-default">Product</button>
+                <button className="font-label-lg text-on-surface-variant/80 hover:text-primary transition-colors font-bold uppercase tracking-wider text-xs cursor-default">Destinations</button>
+                <button className="font-label-lg text-on-surface-variant/80 hover:text-primary transition-colors font-bold uppercase tracking-wider text-xs cursor-default">Company</button>
+              </div>
+              <div className="flex space-x-6">
+                <a className="text-on-surface-variant/60 hover:text-primary transition-colors" href="#">
+                  <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"></path></svg>
+                </a>
+                <a className="text-on-surface-variant/60 hover:text-primary transition-colors" href="#">
+                  <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path></svg>
+                </a>
+              </div>
+            </div>
+          </footer>
+        </main>
+      )}
+
+      {/* Bottom Navigation (Mobile Only) */}
+      <nav className="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center h-20 pb-safe px-4 bg-surface border-t border-outline-variant/30 z-50 shadow-[0_-4px_20px_rgba(26,26,26,0.06)]">
+        {/* Discover */}
+        <button 
+          onClick={() => setMode('discover')}
+          className={`flex flex-col items-center justify-center rounded-full px-5 py-1 text-xs font-semibold scale-90 transition-transform active:scale-100 cursor-pointer ${
+            mode === 'discover' 
+              ? 'bg-secondary-container text-on-secondary-container shadow-sm border border-outline-variant/10' 
+              : 'text-on-surface-variant/70 hover:bg-surface-container-high'
+          }`}
+        >
+          <span className="material-symbols-outlined mb-0.5" style={{ fontVariationSettings: mode === 'discover' ? '"FILL" 1' : '"FILL" 0' }}>explore</span>
+          <span className="font-label-sm text-[10px] uppercase font-bold tracking-wider">Discover</span>
+        </button>
+        
+        {/* Saved (Inactive) */}
+        <button className="flex flex-col items-center justify-center text-on-surface-variant/40 rounded-full px-4 py-1 cursor-default text-xs font-semibold">
+          <span className="material-symbols-outlined mb-0.5">favorite</span>
+          <span className="font-label-sm text-[10px] uppercase font-bold tracking-wider">Saved</span>
+        </button>
+        
+        {/* Concierge */}
+        <button 
+          onClick={() => setMode('concierge')}
+          className={`flex flex-col items-center justify-center rounded-full px-5 py-1 text-xs font-semibold scale-90 transition-transform active:scale-100 cursor-pointer ${
+            mode === 'concierge' 
+              ? 'bg-secondary-container text-on-secondary-container shadow-sm border border-outline-variant/10' 
+              : 'text-on-surface-variant/70 hover:bg-surface-container-high'
+          }`}
+        >
+          <span className="material-symbols-outlined mb-0.5" style={{ fontVariationSettings: mode === 'concierge' ? '"FILL" 1' : '"FILL" 0' }}>auto_awesome</span>
+          <span className="font-label-sm text-[10px] uppercase font-bold tracking-wider">Concierge</span>
+        </button>
+        
+        {/* Profile (Inactive) */}
+        <button className="flex flex-col items-center justify-center text-on-surface-variant/40 rounded-full px-4 py-1 cursor-default text-xs font-semibold">
+          <span className="material-symbols-outlined mb-0.5">person</span>
+          <span className="font-label-sm text-[10px] uppercase font-bold tracking-wider">Profile</span>
+        </button>
+      </nav>
+    </>
   );
 }
