@@ -17,12 +17,17 @@ export interface FetchPropertiesArgs {
   maxPrice?: number;
 }
 
+// Strip Albanian diacritics so "Saranda" matches "Sarandë", "Tiranë" etc.
+function normalize(s: string): string {
+  return s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+}
+
 export function fetchProperties(args: FetchPropertiesArgs): Property[] {
   let results = loadAll();
 
   if (args.location) {
-    const loc = args.location.toLowerCase();
-    results = results.filter(p => p.location.toLowerCase().includes(loc));
+    const loc = normalize(args.location);
+    results = results.filter(p => normalize(p.location).includes(loc));
   }
   if (args.category) {
     const cat = args.category.toLowerCase();
