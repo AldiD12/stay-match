@@ -15,7 +15,7 @@ function loadReviews(propertyId: string): Review[] {
 }
 
 function keywordScore(reviews: Review[], criteria: string): Array<{ text: string; score: number }> {
-  const words = criteria.toLowerCase().split(/\s+/);
+  const words = criteria.toLowerCase().replace(/[^a-z0-9\s]/g, '').split(/\s+/).filter(Boolean);
   return reviews
     .map(r => {
       const lower = r.text.toLowerCase();
@@ -46,10 +46,15 @@ export async function analyzePropertyReviews(args: AnalyzeArgs): Promise<Propert
     topReviews = keywordScore(reviews, args.criteria);
   }
 
-  const matchStrength =
-    topReviews.length > 0
-      ? Math.min(1, topReviews.reduce((s, r) => s + r.score, 0) / topReviews.length + 0.3)
-      : 0;
+  const avg = topReviews.length > 0
+    ? topReviews.reduce((s, r) => s + r.score, 0) / topReviews.length
+    : 0;
+
+  // Cosine similarity is already calibrated — no bias needed.
+  // Keyword overlap (0–1) needs a baseline boost so weak matches still surface.
+  const matchStrength = hasEmbeddings()
+    ? avg
+    : Math.min(1, avg + 0.3);
 
   return {
     propertyId: args.propertyId,

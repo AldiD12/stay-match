@@ -65,7 +65,7 @@ Intent: location=${intent.location}, maxPrice=${intent.maxPrice ?? 'any'}, party
           toolResult = { ...analysis } as Record<string, unknown>;
           const prop = allProps.find(p => p.id === analysis.propertyId);
           const propName = prop?.name ?? analysis.propertyId;
-          const isAccepted = analysis.matchStrength >= 0.45 && acceptedCollector.length < 5;
+          const isAccepted = analysis.matchStrength >= 0.60 && acceptedCollector.length < 5;
 
           if (isAccepted) {
             acceptedCollector.push(analysis);
@@ -98,5 +98,6 @@ Intent: location=${intent.location}, maxPrice=${intent.maxPrice ?? 'any'}, party
     }
 
     contents.push({ role: 'function', parts: responseParts });
+    await new Promise(r => setTimeout(r, 400));
   }
 }

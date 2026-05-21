@@ -42,8 +42,10 @@ ${JSON.stringify(context, null, 2)}`;
     contents: [{ role: 'user', parts: [{ text: prompt }] }],
   });
 
-  const text = response.text ?? '[]';
-  const clean = text.replace(/```json\n?/g, '').replace(/```\n?/g, '').trim();
+  const raw = response.candidates?.[0]?.content?.parts
+    ?.map(p => ('text' in p ? p.text : ''))
+    .join('') ?? '';
+  const clean = raw.replace(/```json\n?/g, '').replace(/```\n?/g, '').trim();
 
   type SynthResult = {
     propertyId: string;

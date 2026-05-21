@@ -18,6 +18,10 @@ export async function POST(req: NextRequest) {
       const send = (event: unknown) => {
         controller.enqueue(encoder.encode(`data: ${JSON.stringify(event)}\n\n`));
       };
+      const ping = () => controller.enqueue(encoder.encode(': ping\n\n'));
+
+      // Keepalive: prevents proxies and Cloud Run from closing idle SSE connections
+      const keepalive = setInterval(ping, 15000);
 
       try {
         for await (const event of runOrchestrator(query)) {
@@ -28,6 +32,7 @@ export async function POST(req: NextRequest) {
         send({ type: 'error', message: String(err) });
         send({ type: 'done' });
       } finally {
+        clearInterval(keepalive);
         controller.close();
       }
     },
