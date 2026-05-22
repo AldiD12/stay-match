@@ -652,7 +652,7 @@ export default function HomePage() {
                 transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
                 className="font-display-lg text-display-lg md:text-[72px] md:leading-[82px] font-bold text-primary mb-10 tracking-tight text-balance max-w-4xl mx-auto"
               >
-                Where does your <span className="font-serif italic font-normal text-secondary">Heart Wants To Go?</span>
+                Where does your <span className="font-serif italic font-normal text-secondary">Heart Want To Go?</span>
               </motion.h1>
               
               <motion.div 
