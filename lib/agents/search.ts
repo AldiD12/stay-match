@@ -12,13 +12,16 @@ export async function* runSearchAgent(
   intent: QueryIntent,
   originalQuery: string,
   acceptedCollector: PropertyAnalysis[],
+  // Collects ALL scored properties regardless of threshold — used by orchestrator as last resort
+  allScored: PropertyAnalysis[],
+  lowThreshold = false,
 ): AsyncGenerator<AgentEvent> {
   const systemPrompt = `You are a property matching agent for Albania. Follow these steps EXACTLY:
 1. Call fetchProperties ONCE to get candidates. Do NOT call it again.
 2. For EACH property returned, call analyzePropertyReviews with the criteria below.
 3. After all analyzePropertyReviews calls are done, output a single summary sentence. Stop.
 
-Criteria for analyzePropertyReviews: "${intent.vibe} ${intent.travelStyle}"
+Criteria for analyzePropertyReviews: "${originalQuery} — ${intent.vibe}"
 User query: "${originalQuery}"
 Filters: location=${intent.location}, maxPrice=${intent.maxPrice ?? 'any'}, partySize=${intent.partySize ?? 'any'}`;
 
@@ -44,28 +47,36 @@ Filters: location=${intent.location}, maxPrice=${intent.maxPrice ?? 'any'}, part
       const fc = part.functionCall!;
       const startMs = Date.now();
       const args = (fc.args ?? {}) as Record<string, unknown>;
-      yield { type: 'tool_call_start', tool: fc.name ?? '', params: args };
+      // Vertex AI prefixes tool names with "default_api." — strip it before matching
+      const toolName = (fc.name ?? '').replace(/^default_api\./, '');
+      yield { type: 'tool_call_start', tool: toolName, params: args };
 
       let toolResult: Record<string, unknown>;
       try {
-        if (fc.name === 'fetchProperties') {
+        if (toolName === 'fetchProperties') {
           const found = fetchProperties(args as Parameters<typeof fetchProperties>[0]);
           toolResult = { properties: found };
           yield {
             type: 'tool_call_result',
-            tool: fc.name,
+            tool: toolName,
             success: true,
             durationMs: Date.now() - startMs,
             summary: `Found ${found.length} candidate(s)`,
           };
-        } else if (fc.name === 'analyzePropertyReviews') {
+        } else if (toolName === 'analyzePropertyReviews') {
           const analysis = await analyzePropertyReviews(
             args as unknown as Parameters<typeof analyzePropertyReviews>[0],
           );
           toolResult = { ...analysis } as Record<string, unknown>;
           const prop = allProps.find(p => p.id === analysis.propertyId);
           const propName = prop?.name ?? analysis.propertyId;
-          const isAccepted = analysis.matchStrength >= 0.60 && acceptedCollector.length < 5;
+
+          // Always track every scored property — deduped by propertyId
+          const alreadyTracked = allScored.some(s => s.propertyId === analysis.propertyId);
+          if (!alreadyTracked) allScored.push(analysis);
+
+          const threshold = lowThreshold ? 0.30 : 0.45;
+          const isAccepted = analysis.matchStrength >= threshold && acceptedCollector.length < 5;
 
           if (isAccepted) {
             acceptedCollector.push(analysis);
@@ -75,22 +86,23 @@ Filters: location=${intent.location}, maxPrice=${intent.maxPrice ?? 'any'}, part
           }
           yield {
             type: 'tool_call_result',
-            tool: fc.name,
+            tool: toolName,
             success: true,
             durationMs: Date.now() - startMs,
             summary: `Match: ${(analysis.matchStrength * 100).toFixed(0)}%`,
           };
         } else {
           toolResult = { error: `Unknown tool: ${fc.name ?? 'unnamed'}` };
-          yield { type: 'tool_call_result', tool: fc.name ?? '', success: false, durationMs: Date.now() - startMs, summary: 'Unknown tool' };
+          yield { type: 'tool_call_result', tool: toolName, success: false, durationMs: Date.now() - startMs, summary: 'Unknown tool' };
         }
       } catch (err) {
         toolResult = { error: String(err) };
-        yield { type: 'tool_call_result', tool: fc.name ?? '', success: false, durationMs: Date.now() - startMs, summary: String(err) };
+        yield { type: 'tool_call_result', tool: toolName, success: false, durationMs: Date.now() - startMs, summary: String(err) };
       }
 
       responseParts.push({
         functionResponse: {
+          // Send back the original name (with prefix) so Vertex AI can match it
           name: fc.name ?? '',
           response: toolResult,
         },
