@@ -37,46 +37,46 @@ interface PolaroidData {
 
 const POLAROIDS: PolaroidData[] = [
   {
-    id: 'beach-lounge',
-    src: 'https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=600&q=80',
-    alt: 'Coastal Serenity Living Room',
-    caption: 'Coastal Serenity',
-    query: 'luxury beachfront villa in Vlorë or Sarandë with ocean views, fast fiber wifi, and a spacious terrace',
+    id: 'ksamil-beach',
+    src: 'https://images.unsplash.com/photo-1599946347371-68eb71b16afc?auto=format&fit=crop&w=600&q=80',
+    alt: 'Ksamil Beach turquoise waters',
+    caption: 'Ksamil Paradise',
+    query: 'luxury beachfront villa in Ksamil or Sarandë with turquoise sea views, fast fiber wifi, and a spacious terrace',
   },
   {
-    id: 'winter-cabin',
-    src: 'https://images.unsplash.com/photo-1510798831971-661eb04b3739?auto=format&fit=crop&w=600&q=80',
-    alt: 'Cozy Winter Cabin Fireplace',
-    caption: 'Alpine Warmth',
-    query: 'cozy wooden cabin in Korçë or Voskopojë with a fireplace, alpine forest views, and comfortable workstations',
+    id: 'theth-mountains',
+    src: 'https://images.unsplash.com/photo-1605640840605-14ac1855827b?auto=format&fit=crop&w=600&q=80',
+    alt: 'Theth Albanian Alps mountains',
+    caption: 'Albanian Alps',
+    query: 'cozy mountain guesthouse in Theth or Valbona with alpine views, stone architecture, fireplace, and peaceful workspaces',
   },
   {
-    id: 'bamboo-workspace',
-    src: 'https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=600&q=80',
-    alt: 'Bamboo Jungle Workspace Hammock',
-    caption: 'Jungle Sanctuary',
-    query: 'eco-friendly bamboo villa or retreat in the jungle with hammock, high-speed internet, and a peaceful work environment',
+    id: 'berat-houses',
+    src: 'https://images.unsplash.com/photo-1705405999485-188af37e0462?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YmVyYXR8ZW58MHx8MHx8fDA%3D',
+    alt: 'Berat white Ottoman houses',
+    caption: 'City of Windows',
+    query: 'historic Ottoman house in Berat with traditional white architecture, mountain views, and authentic Albanian character',
   },
   {
-    id: 'vintage-bedroom',
-    src: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=600&q=80',
-    alt: 'Vintage Bedroom copper clawfoot tub',
-    caption: 'Boutique Suite',
-    query: 'historic boutique stay with vintage design, luxury clawfoot copper bathtub, elegant interior, and central location',
+    id: 'gjirokaster-stone',
+    src: 'https://images.unsplash.com/photo-1630339858071-4e64cc76fb6c?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Z2ppcm9rYXN0ZXJ8ZW58MHx8MHx8fDA%3D',
+    alt: 'Gjirokastër stone architecture',
+    caption: 'Stone City',
+    query: 'UNESCO heritage stone house in Gjirokastër with castle views, traditional architecture, and modern amenities',
   },
   {
-    id: 'courtyard-coffee',
-    src: 'https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=600&q=80',
-    alt: 'Courtyard Garden Steaming Coffee Cup',
-    caption: 'Morning Sanctuary',
-    query: 'charming stone villa with a lush private courtyard garden, outdoor seating, streaming sunlight, and cozy work desks',
+    id: 'riviera-sunset',
+    src: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=600&q=80',
+    alt: 'Albanian Riviera sunset coastline',
+    caption: 'Riviera Sunset',
+    query: 'stunning coastal villa on the Albanian Riviera in Dhërmi or Himara with sunset views, infinity pool, and outdoor workspace',
   },
   {
-    id: 'amalfi-balcony',
-    src: 'https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=600&q=80',
-    alt: 'Mediterranean Balcony breakfast set bougainvillea',
-    caption: 'Mediterranean Terrace',
-    query: 'spectacular Riviera apartment with a panoramic sea-view balcony, bougainvillea flowers, outdoor dining table, and quiet workspace',
+    id: 'tirana-modern',
+    src: 'https://images.unsplash.com/photo-1555881400-74d7acaacd8b?auto=format&fit=crop&w=600&q=80',
+    alt: 'Tirana colorful buildings',
+    caption: 'Vibrant Tirana',
+    query: 'modern apartment in central Tirana with colorful architecture, rooftop terrace, high-speed internet, and city views',
   },
 ];
 
@@ -607,42 +607,42 @@ export default function HomePage() {
               alt={POLAROIDS[0].alt}
               caption={POLAROIDS[0].caption}
               rotation="rotate-[-6deg]"
-              className="absolute top-[6%] left-[-4%] w-[130px] lg:w-[170px] hidden lg:block opacity-40 hover:opacity-100 hover:rotate-[-2deg] transition-all duration-500"
+              className="absolute top-[6%] left-[8%] w-[130px] lg:w-[170px] hidden lg:block opacity-40 hover:opacity-100 hover:rotate-[-2deg] transition-all duration-500"
             />
             <PolaroidPhoto
               src={POLAROIDS[1].src}
               alt={POLAROIDS[1].alt}
               caption={POLAROIDS[1].caption}
               rotation="rotate-[5deg]"
-              className="absolute top-[8%] right-[-4%] w-[140px] lg:w-[180px] hidden lg:block opacity-40 hover:opacity-100 hover:rotate-[2deg] transition-all duration-500"
+              className="absolute top-[8%] right-[8%] w-[140px] lg:w-[180px] hidden lg:block opacity-40 hover:opacity-100 hover:rotate-[2deg] transition-all duration-500"
             />
             <PolaroidPhoto
               src={POLAROIDS[2].src}
               alt={POLAROIDS[2].alt}
               caption={POLAROIDS[2].caption}
               rotation="rotate-[-3deg]"
-              className="absolute top-[44%] left-[-5%] w-[120px] lg:w-[160px] hidden xl:block opacity-35 hover:opacity-100 hover:rotate-0 transition-all duration-500"
+              className="absolute top-[44%] left-[6%] w-[120px] lg:w-[160px] hidden xl:block opacity-35 hover:opacity-100 hover:rotate-0 transition-all duration-500"
             />
             <PolaroidPhoto
               src={POLAROIDS[3].src}
               alt={POLAROIDS[3].alt}
               caption={POLAROIDS[3].caption}
               rotation="rotate-[4deg]"
-              className="absolute top-[46%] right-[-5%] w-[120px] lg:w-[160px] hidden xl:block opacity-35 hover:opacity-100 hover:rotate-0 transition-all duration-500"
+              className="absolute top-[46%] right-[6%] w-[120px] lg:w-[160px] hidden xl:block opacity-35 hover:opacity-100 hover:rotate-0 transition-all duration-500"
             />
             <PolaroidPhoto
               src={POLAROIDS[4].src}
               alt={POLAROIDS[4].alt}
               caption={POLAROIDS[4].caption}
               rotation="rotate-[3deg]"
-              className="absolute bottom-[4%] left-[6%] w-[130px] lg:w-[170px] hidden lg:block opacity-40 hover:opacity-100 hover:rotate-[-1deg] transition-all duration-500"
+              className="absolute bottom-[4%] left-[10%] w-[130px] lg:w-[170px] hidden lg:block opacity-40 hover:opacity-100 hover:rotate-[-1deg] transition-all duration-500"
             />
             <PolaroidPhoto
               src={POLAROIDS[5].src}
               alt={POLAROIDS[5].alt}
               caption={POLAROIDS[5].caption}
               rotation="rotate-[-4deg]"
-              className="absolute bottom-[6%] right-[6%] w-[130px] lg:w-[170px] hidden lg:block opacity-40 hover:opacity-100 hover:rotate-[1deg] transition-all duration-500"
+              className="absolute bottom-[6%] right-[10%] w-[130px] lg:w-[170px] hidden lg:block opacity-40 hover:opacity-100 hover:rotate-[1deg] transition-all duration-500"
             />
 
             <div className="relative z-10 text-center w-full max-w-[950px] mx-auto">
@@ -652,7 +652,7 @@ export default function HomePage() {
                 transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
                 className="font-display-lg text-display-lg md:text-[72px] md:leading-[82px] font-bold text-primary mb-10 tracking-tight text-balance max-w-4xl mx-auto"
               >
-                Find your stay using <span className="font-serif italic font-normal text-secondary">natural language</span>
+                Where does your <span className="font-serif italic font-normal text-secondary">Heart Wants To Go?</span>
               </motion.h1>
               
               <motion.div 
