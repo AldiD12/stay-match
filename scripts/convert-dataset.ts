@@ -112,9 +112,9 @@ async function main() {
   console.log('\nSelecting top places per city + category:');
   for (const [key, records] of Object.entries(groups)) {
     const [city, cat] = key.split('::');
-    const limit = LARGE_CITIES.has(city) ? 3 : 2;
-    const minRating = cat === 'activity' ? 4.0 : 4.3;
-    const minReviews = cat === 'activity' ? 3 : 5;
+    const limit = LARGE_CITIES.has(city) ? 8 : 5;
+    const minRating = cat === 'activity' ? 3.8 : 4.0;
+    const minReviews = cat === 'activity' ? 3 : 3;
 
     const qualified = records
       .filter(r => (r.totalScore ?? 0) >= minRating && (r.reviewsCount ?? 0) >= minReviews)

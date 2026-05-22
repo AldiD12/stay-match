@@ -646,11 +646,11 @@ export default function HomePage() {
             />
 
             <div className="relative z-10 text-center w-full max-w-[950px] mx-auto">
-              <motion.h1 
+              <motion.h1
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                className="font-display-lg text-display-lg md:text-[72px] md:leading-[82px] font-bold text-primary mb-10 tracking-tight text-balance max-w-4xl mx-auto"
+                className="font-display-lg text-[32px] leading-[40px] sm:text-[44px] sm:leading-[54px] md:text-[72px] md:leading-[82px] font-bold text-primary mb-6 md:mb-10 tracking-tight text-balance max-w-4xl mx-auto"
               >
                 Where does your <span className="font-serif italic font-normal text-secondary">Heart Wants To Go?</span>
               </motion.h1>
@@ -734,8 +734,8 @@ export default function HomePage() {
           </AnimatePresence>
 
           {/* Curated Collections Section */}
-          <section className="py-32 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto w-full">
-            <h2 className="font-display-lg text-4xl md:text-6xl font-bold text-primary mb-24 text-center tracking-tight max-w-4xl mx-auto leading-tight">
+          <section className="py-16 md:py-32 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto w-full">
+            <h2 className="font-display-lg text-3xl md:text-6xl font-bold text-primary mb-10 md:mb-24 text-center tracking-tight max-w-4xl mx-auto leading-tight">
               Curated collections for the <span className="font-serif italic font-normal text-secondary">modern explorer</span>.
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-12 lg:gap-16 justify-items-center">
@@ -756,11 +756,11 @@ export default function HomePage() {
           </section>
 
           {/* How It Works Section */}
-          <section className="py-32 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto w-full border-t border-outline-variant/10">
-            <h2 className="font-display-lg text-4xl md:text-6xl font-bold text-primary mb-24 text-center tracking-tight leading-tight">
+          <section className="py-16 md:py-32 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto w-full border-t border-outline-variant/10">
+            <h2 className="font-display-lg text-3xl md:text-6xl font-bold text-primary mb-10 md:mb-24 text-center tracking-tight leading-tight">
               Your stay, <span className="font-serif italic font-normal text-secondary">curated</span> in seconds.
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-12">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12">
               <div className="flex flex-col items-center text-center group">
                 <div className="text-8xl font-serif italic text-secondary/20 mb-6 group-hover:text-secondary transition-colors duration-500 font-bold">01</div>
                 <h3 className="font-headline-md text-2xl font-bold mb-4 tracking-tight">Describe Your Vibe</h3>
@@ -786,10 +786,10 @@ export default function HomePage() {
           </section>
 
           {/* Features Grid Section */}
-          <section className="py-32 px-margin-mobile md:px-margin-desktop bg-surface-container-lowest border-y border-outline-variant/10 relative">
+          <section className="py-16 md:py-32 px-margin-mobile md:px-margin-desktop bg-surface-container-lowest border-y border-outline-variant/10 relative">
             <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-[0.015] pointer-events-none"></div>
             <div className="max-w-container-max mx-auto w-full relative z-10">
-              <h2 className="font-display-lg text-4xl md:text-5xl font-bold text-primary mb-20 text-center tracking-tight">
+              <h2 className="font-display-lg text-3xl md:text-5xl font-bold text-primary mb-10 md:mb-20 text-center tracking-tight">
                 Built for how you live and work
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
@@ -819,31 +819,31 @@ export default function HomePage() {
           </section>
 
           {/* Final CTA Banner */}
-          <section className="py-24 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto w-full">
-            <div className="bg-primary rounded-[3rem] p-16 md:p-28 flex flex-col items-center text-center shadow-2xl relative overflow-hidden">
+          <section className="py-12 md:py-24 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto w-full">
+            <div className="bg-primary rounded-[2rem] md:rounded-[3rem] p-8 sm:p-12 md:p-28 flex flex-col items-center text-center shadow-2xl relative overflow-hidden">
               <div className="absolute top-0 right-0 w-96 h-96 bg-white/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3 pointer-events-none"></div>
               <div className="absolute bottom-0 left-0 w-96 h-96 bg-secondary-container/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/3 pointer-events-none"></div>
-              
-              <h2 className="font-display-lg text-4xl md:text-6xl font-bold text-white mb-16 tracking-tight relative z-10 max-w-2xl mx-auto leading-tight">
+
+              <h2 className="font-display-lg text-3xl sm:text-4xl md:text-6xl font-bold text-white mb-8 md:mb-16 tracking-tight relative z-10 max-w-2xl mx-auto leading-tight">
                 Ready to find your match?
               </h2>
-              
+
               <div className="w-full max-w-3xl relative z-10">
-                <form onSubmit={handleBottomSubmit} className="relative flex items-center w-full h-20 rounded-full bg-white border border-transparent shadow-2xl focus-within:ring-4 focus-within:ring-white/20 transition-all overflow-hidden pl-8 pr-2">
-                  <span className="material-symbols-outlined text-on-surface-variant mr-4 text-[28px]">search</span>
-                  <input 
-                    type="text" 
+                <form onSubmit={handleBottomSubmit} className="relative flex items-center w-full h-14 md:h-20 rounded-full bg-white border border-transparent shadow-2xl focus-within:ring-4 focus-within:ring-white/20 transition-all overflow-hidden pl-5 md:pl-8 pr-2">
+                  <span className="material-symbols-outlined text-on-surface-variant mr-2 md:mr-4 text-[22px] md:text-[28px] shrink-0">search</span>
+                  <input
+                    type="text"
                     value={bottomQuery}
                     onChange={e => setBottomQuery(e.target.value)}
-                    placeholder="Where do you want to stay in Albania?"
-                    className="w-full h-full bg-transparent border-none focus:ring-0 font-body-lg text-body-lg text-primary placeholder:text-on-surface-variant/40 outline-none"
+                    placeholder="Where to in Albania?"
+                    className="w-full h-full bg-transparent border-none focus:ring-0 text-sm md:text-body-lg text-primary placeholder:text-on-surface-variant/40 outline-none"
                   />
-                  <button 
+                  <button
                     type="submit"
                     disabled={isRunning || !bottomQuery.trim()}
-                    className="bg-primary text-white rounded-full p-4 hover:bg-zinc-800 transition-colors ml-2 flex items-center justify-center h-16 w-16 shrink-0 shadow-md disabled:opacity-40"
+                    className="bg-primary text-white rounded-full p-3 md:p-4 hover:bg-zinc-800 transition-colors ml-2 flex items-center justify-center h-10 w-10 md:h-16 md:w-16 shrink-0 shadow-md disabled:opacity-40"
                   >
-                    <span className="material-symbols-outlined text-[24px]">arrow_forward</span>
+                    <span className="material-symbols-outlined text-[18px] md:text-[24px]">arrow_forward</span>
                   </button>
                 </form>
               </div>

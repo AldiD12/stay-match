@@ -17,17 +17,26 @@ export interface FetchPropertiesArgs {
   maxPrice?: number;
 }
 
-// Strip Albanian diacritics so "Saranda" matches "Sarandë", "Tiranë" etc.
+// Strip diacritics: "Tiranë"→"tirane", "Sarandë"→"sarande", "Sarandа"→"saranda"
 function normalize(s: string): string {
   return s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+}
+
+// "Saranda" matches "Sarandë" and vice versa — Albanian ending ë/a differ after stripping
+function locMatch(haystack: string, needle: string): boolean {
+  const h = normalize(haystack);
+  const n = normalize(needle);
+  if (h.includes(n) || n.includes(h)) return true;
+  // Try stem match (drop last char) to handle Tiranë↔Tirana, Sarandë↔Saranda
+  const stem = n.length > 4 ? n.slice(0, -1) : n;
+  return stem.length >= 4 && h.startsWith(stem);
 }
 
 export function fetchProperties(args: FetchPropertiesArgs): Property[] {
   let results = loadAll();
 
-  if (args.location) {
-    const loc = normalize(args.location);
-    results = results.filter(p => normalize(p.location).includes(loc));
+  if (args.location && normalize(args.location) !== 'albania') {
+    results = results.filter(p => locMatch(p.location, args.location!));
   }
   if (args.category) {
     const cat = args.category.toLowerCase();
